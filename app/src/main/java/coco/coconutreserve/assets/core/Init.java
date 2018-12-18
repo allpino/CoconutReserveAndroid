@@ -14,7 +14,7 @@ public class Init {
                 Hotel hotel = new Hotel("Cool Hotel Name #"+i,
                                         "Cool Hotel Description#"+i,
                                         Utils.randomWithRange(10,30),
-                                        Utils.randomWithRange(4.0,9.8));
+                                        Utils.randomWithRange(4.0,9.0));
                 data[i] = hotel;
 
             }

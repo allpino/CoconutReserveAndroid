@@ -65,3 +65,7 @@ fabric.properties
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+.idea/misc.xml
+.idea/gradle.xml
+.idea/runConfigurations.xml
+.idea/misc.xml
