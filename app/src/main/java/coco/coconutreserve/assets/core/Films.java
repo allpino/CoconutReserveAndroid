@@ -1,7 +1,5 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
-
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 

@@ -1,4 +1,4 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
 public class TransportionSeat implements SeatAndRoom{
 

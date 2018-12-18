@@ -1,13 +1,13 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
 import java.time.LocalDateTime;
 
 public class HotelReservation implements Reservation {
 
-    Hotel hotel;
-    HotelRoom hotelRoom;
-    LocalDateTime reservation_date;
-    String reserver_name;
+    private Hotel hotel;
+    private HotelRoom hotelRoom;
+    private LocalDateTime reservation_date;
+    private String reserver_name;
 
     public HotelReservation(Hotel hotel, HotelRoom hotelRoom, LocalDateTime reservation_date, String reserver_name){
 

@@ -1,4 +1,4 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,5 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
-import assets.core.Reservation;
 
 public class Transportion implements Place {
 

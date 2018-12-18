@@ -1,4 +1,4 @@
-package assets.core;
+package coco.coconutreserve.assets.core;
 
 public interface Place {
 
@@ -16,7 +16,8 @@ public interface Place {
     {
         if (this instanceof Cinema)
         {
-
+            return new SeatAndRoom[1][2];
         }
+        
     }
 }
