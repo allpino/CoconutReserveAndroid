@@ -12,12 +12,8 @@ public interface Place {
 
     public String toString();
 
-    default SeatAndRoom[][] getSeats(int saloonNum)
-    {
-        if (this instanceof Cinema)
-        {
-            return new SeatAndRoom[1][2];
-        }
-        
-    }
+    SeatAndRoom[][] getSeats();
+
+    SeatAndRoom[][] getSeats(int indexOfMid);
+
 }

@@ -68,6 +68,16 @@ public class Hotel implements Place{
     }
 
     @Override
+    public SeatAndRoom[][] getSeats() {
+        return hotelRooms;
+    }
+
+    @Override
+    public SeatAndRoom[][] getSeats(int indexOfMid) {
+        return hotelRooms;
+    }
+
+    @Override
     public double getScore() {
         return score;
     }

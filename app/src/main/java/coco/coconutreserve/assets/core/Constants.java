@@ -9,12 +9,9 @@ public class Constants {
     public static final int NUM_OF_HOTELS= 5;
     public static final int NUM_OF_TRANSPORTIONS= 5;
 
-    public static final int BUS = Character.getNumericValue('B')+Character.getNumericValue('U')+
-                                    Character.getNumericValue('S');
-    public static final int PLANE = Character.getNumericValue('P') + Character.getNumericValue('L')+
-                                    Character.getNumericValue('A');
-    public static final int TRAIN = Character.getNumericValue('T') + Character.getNumericValue('R') +
-                                    Character.getNumericValue('A');
+    public static final String BUS = "BUS";
+    public static final String PLANE = "PLANE";
+    public static final String TRAIN = "TRAIN";
 
 
 

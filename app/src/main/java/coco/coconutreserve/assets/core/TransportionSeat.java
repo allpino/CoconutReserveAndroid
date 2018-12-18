@@ -24,6 +24,11 @@ public class TransportionSeat implements SeatAndRoom{
     }
 
     @Override
+    public String toString(){
+        return name;
+    }
+
+    @Override
     public int getCapacity() {
         return capacity;
     }

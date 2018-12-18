@@ -69,6 +69,16 @@ public class Cinema implements Place{
         return cinemaSaloons;
     }
 
+    @Override
+    public SeatAndRoom[][] getSeats(int indexOfMid) {
+        return cinemaSaloons[indexOfMid].getSeats();
+    }
+
+    @Override
+    public SeatAndRoom[][] getSeats() {
+        throw new NullPointerException("You must specify cinemaSaloon number");
+    }
+
     public String toString(){
         return name;
     }

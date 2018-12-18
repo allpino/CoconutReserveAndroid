@@ -9,17 +9,17 @@ public class Transportion implements Place {
     private double score;
     private int numOfSeats;
     private int capacity;
-    private int type;
+    private String type;
     private TransportionSeat[][] transportionSeats;
 
 
-    public Transportion(String name, String description, double score, int numOfSeats, int type) {
+    public Transportion(String name, String description, double score, int numOfSeats, String type) {
 
         if(name == null || description == null || score == 0 || score > 10.0 || numOfSeats == 0)
         {
             throw new NullPointerException("Transportion parameters are empty!");
         }
-        else if( type != Constants.BUS || type != Constants.PLANE || type != Constants.TRAIN)
+        else if( !type.equals(Constants.BUS ) || !type.equals(Constants.PLANE ) || !type.equals(Constants.TRAIN ) )
         {
             throw new NullPointerException("Type must be defined constant");
         }
@@ -44,6 +44,42 @@ public class Transportion implements Place {
             }
         }
 
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public double getScore() {
+        return score;
+    }
+
+
+    @Override
+    public String toString(){
+        return "name: " + name + " Type: " + type;
+    }
+
+    @Override
+    public SeatAndRoom[][] getSeats() {
+        return transportionSeats;
+    }
+
+    @Override
+    public SeatAndRoom[][] getSeats(int indexOfMid) {
+        return transportionSeats;
 
     }
 }
