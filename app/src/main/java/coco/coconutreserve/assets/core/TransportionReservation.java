@@ -8,6 +8,7 @@ public class TransportionReservation implements Reservation {
     private TransportionSeat transportionSeat;
     private LocalDateTime reservation_date;
     private String reserver_name;
+    private boolean isPaid;
 
     public TransportionReservation(Transportion transportion, TransportionSeat transportionSeat,
                                    LocalDateTime reservation_date, String reserver_name) {
@@ -22,6 +23,7 @@ public class TransportionReservation implements Reservation {
         this.transportionSeat = transportionSeat;
         this.reservation_date = reservation_date;
         this.reserver_name = reserver_name;
+        this.isPaid = false;
     }
 
 
@@ -43,6 +45,27 @@ public class TransportionReservation implements Reservation {
 
     @Override
     public int getPrice() {
-        return getPrice();
+        return transportionSeat.getPrice();
+    }
+
+
+    @Override
+    public Place getPlace() {
+        return transportion;
+    }
+
+    @Override
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    @Override
+    public void setAsPaid() {
+        this.isPaid = true;
+    }
+
+    @Override
+    public SeatAndRoom getSeatAndRoom() {
+        return transportionSeat;
     }
 }

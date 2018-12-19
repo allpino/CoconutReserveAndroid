@@ -9,6 +9,7 @@ public class CinemaReservation implements Reservation {
     private CinemaSaloon cinemaSaloon;
     private CinemaSeat cinemaSeat;
     private String reserver_name;
+    private boolean isPaid;
 
     public CinemaReservation(Cinema cinema, CinemaSaloon cinemaSaloon, LocalDateTime reserve_date, String reserver_name) {
         this.cinema = cinema;
@@ -16,6 +17,7 @@ public class CinemaReservation implements Reservation {
         this.cinemaSaloon = cinemaSaloon;
         this.cinemaSeat = cinemaSeat;
         this.reserver_name = reserver_name;
+        this.isPaid = false;
     }
 
     @Override
@@ -40,5 +42,25 @@ public class CinemaReservation implements Reservation {
 
     public Films.Film getFilm(){
         return cinemaSaloon.getFilm();
+    }
+
+    @Override
+    public Place getPlace() {
+        return cinema;
+    }
+
+    @Override
+    public SeatAndRoom getSeatAndRoom() {
+        return cinemaSeat;
+    }
+
+    @Override
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    @Override
+    public void setAsPaid() {
+        this.isPaid = true;
     }
 }

@@ -2,11 +2,12 @@ package coco.coconutreserve.assets.core;
 public class Init {
 
     private Place[] data;
+    private User[] users;
 
 
-    public Init(int type)
+    public Init(String type)
     {
-        if (type == Constants.HOTEL)
+        if (type.equals(Constants.HOTEL))
         {
             data = new Hotel[Constants.NUM_OF_HOTELS];
             for (int i = 0; i < Constants.NUM_OF_HOTELS; i++)
@@ -18,8 +19,9 @@ public class Init {
                 data[i] = hotel;
 
             }
+
         }
-        else if(type == Constants.CINEMA)
+        else if(type.equals(Constants.CINEMA))
         {
             data = new Cinema[Constants.NUM_OF_CINEMAS];
             for (int i = 0; i < Constants.NUM_OF_CINEMAS; i++)
@@ -31,7 +33,7 @@ public class Init {
                 data[i] = cinema;
             }
         }
-        else if(type == Constants.TRANSPORTION)
+        else if(type.equals(Constants.TRANSPORTION))
         {
             //Fill this later
         }
@@ -42,11 +44,30 @@ public class Init {
             throw new NullPointerException("Something went wrong in Init");
         }
 
+        users = new User[Constants.NUM_OF_USERS];
+        for (int i = 0; i < Constants.NUM_OF_USERS ; i++)
+        {
+            if (i % 3 == 0)
+            {
+                users[i] = new User("Cool User name"+ i,Constants.CINEMA,i/2 == 0 ? Constants.PREMIUM: Constants.FREE);
+            }
+            else if ( i % 3 == 1)
+            {
+                users[i] = new User("Cool User Name"+i, Constants.HOTEL);
+            }
+            else if( i % 3 == 2)
+            {
+                users[i] = new User("Cool User Name"+i,Constants.TRANSPORTION);
+            }
+        }
+
     }
 
     public Place[] getData() {
         return data;
     }
+    public User[] getUsers(){return users;}
+
 }
 
 

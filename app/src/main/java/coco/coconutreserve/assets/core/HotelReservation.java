@@ -8,6 +8,7 @@ public class HotelReservation implements Reservation {
     private HotelRoom hotelRoom;
     private LocalDateTime reservation_date;
     private String reserver_name;
+    private boolean isPaid;
 
     public HotelReservation(Hotel hotel, HotelRoom hotelRoom, LocalDateTime reservation_date, String reserver_name){
 
@@ -20,6 +21,7 @@ public class HotelReservation implements Reservation {
         this.hotelRoom = hotelRoom;
         this.reservation_date = reservation_date;
         this.reserver_name = reserver_name;
+        this.isPaid = false;
     }
 
 
@@ -42,5 +44,25 @@ public class HotelReservation implements Reservation {
     @Override
     public int getPrice() {
         return hotelRoom.getPrice();
+    }
+
+    @Override
+    public Place getPlace() {
+        return hotel;
+    }
+
+    @Override
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    @Override
+    public void setAsPaid() {
+        this.isPaid = true;
+    }
+
+    @Override
+    public SeatAndRoom getSeatAndRoom() {
+        return hotelRoom;
     }
 }

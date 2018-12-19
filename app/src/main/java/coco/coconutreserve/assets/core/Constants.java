@@ -1,17 +1,26 @@
 package coco.coconutreserve.assets.core;
 
 public class Constants {
-    public static final int CINEMA = 0;
-    public static final int TRANSPORTION = 1;
-    public static final int HOTEL = 2;
+    public static final String CINEMA = "CINEMA";
+    public static final String TRANSPORTION = "TRANSPORTION";
+    public static final String HOTEL = "HOTEL";
 
     public static final int NUM_OF_CINEMAS = 5;
     public static final int NUM_OF_HOTELS= 5;
     public static final int NUM_OF_TRANSPORTIONS= 5;
+    public static final int NUM_OF_USERS= 10;
+
+
+    public static final String FREE = "FREE";
+    public static final String PREMIUM = "PREMIUM";
 
     public static final String BUS = "BUS";
     public static final String PLANE = "PLANE";
     public static final String TRAIN = "TRAIN";
+
+    public static final String FINGERPRINT = "FINGERPRINT";
+    public static final String CREDITCARD = "CREDITCARD";
+    public static final String PAYPAL = "PAYPAL";
 
 
 
