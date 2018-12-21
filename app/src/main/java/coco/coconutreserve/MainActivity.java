@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (Button) findViewById(R.id.signUp);
 
-        signIn.setOnClickListener( signIn.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 Toast.makeText( getApplicationContext(),"User SIGNED IN ",
@@ -42,10 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(intent);
             }
-        }
-        ) );
+        });
 
-        signUp.setOnClickListener( signUp.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText( getApplicationContext(),"User SIGNED UP ",
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(intent);
             }
-        }));
+        });
 
 
 
