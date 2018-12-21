@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import coco.coconutreserve.R;
+
 public class HotelRoom implements SeatAndRoom{
 
     //IMPORTANT: If new variable is added, change Init as well
@@ -41,6 +43,7 @@ public class HotelRoom implements SeatAndRoom{
     @Override
     public void setAsTaken() {
         isTaken = true;
+        pictureId = R.drawable.bed_full;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package coco.coconutreserve.assets.core;
 
 
+import coco.coconutreserve.R;
+
 public class Transportion implements Place {
 
     //IMPORTANT: If new variable is added, change Init as well
@@ -40,7 +42,7 @@ public class Transportion implements Place {
             for (int j = 0; j < numOfSeats/4 ; j++)
             {
                 TransportionSeat seat = new TransportionSeat((char)(65 +i) + "-" + j,
-                        Utils.randomWithRange(10,15),4,numOfSeats/4); // add pics
+                        Utils.randomWithRange(10,15),4,numOfSeats/4, R.drawable.seat_empty); // add pics
                 transportionSeats[i][j] = seat;
                 capacity += seat.getCapacity();
 
