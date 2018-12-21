@@ -9,5 +9,6 @@ public interface SeatAndRoom {
     void setAsTaken();
     int getRowCount();
     int getColumnCount();
+    int getPicture();
 
 }

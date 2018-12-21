@@ -16,4 +16,6 @@ public interface Place {
 
     SeatAndRoom[][] getSeats(int indexOfMid);
 
+    int getPicture();
+
 }
