@@ -27,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (Button) findViewById(R.id.signUp);
 
+<<<<<<< HEAD
         signIn.setOnClickListener(new View.OnClickListener(){
+=======
+        signIn.setOnClickListener(new View.OnClickListener()
+        {
+>>>>>>> 0918b058f2ec03df04b0418d3fc3e52832af97c3
             @Override
             public void onClick(View v) {
                 Toast.makeText( getApplicationContext(),"User SIGNED UP ",
@@ -36,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
         signUp.setOnClickListener(new View.OnClickListener(){
+=======
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+>>>>>>> 0918b058f2ec03df04b0418d3fc3e52832af97c3
             @Override
             public void onClick(View v) {
                 Toast.makeText( getApplicationContext(),"User SIGNED UP ",
