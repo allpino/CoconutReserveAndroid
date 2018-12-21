@@ -19,7 +19,13 @@
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard" />
-        <activity android:name=".ListOfFilms"></activity>
+        <activity android:name=".ListOfFilms" />
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".Notifications"
+            android:label="@string/title_activity_notifications"></activity>
     </application>
 
 </manifest>

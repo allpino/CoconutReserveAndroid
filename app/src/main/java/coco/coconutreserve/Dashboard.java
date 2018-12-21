@@ -1,9 +1,11 @@
 package coco.coconutreserve;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,9 +25,6 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         Init init = new Init(Constants.CINEMA);
 
         Cinema[] cinemas = (Cinema[]) init.getData();
@@ -33,7 +32,32 @@ public class Dashboard extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.activity_list_of_films);
         FilmAdaptor filmAdaptor = new FilmAdaptor(this, Films.films);
         listView.setAdapter(filmAdaptor);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case (R.id.navigation_home):
+                        Intent intent = new Intent(Dashboard.this, Home.class);
+                        startActivity(intent);
+                        break;
+                    case (R.id.navigation_dashboard):
+                        Intent intent2 = new Intent(Dashboard.this, Dashboard.class);
+                        startActivity(intent2);
+                        break;
+                    case (R.id.navigation_notifications):
+                        Intent intent3 = new Intent(Dashboard.this, Notifications.class);
+                        startActivity(intent3);
+                        break;
+                }
+                return false;
+            }
+        });
+
     }
+
+/*
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,5 +78,5 @@ public class Dashboard extends AppCompatActivity {
             return false;
         }
     };
-
+*/
 }

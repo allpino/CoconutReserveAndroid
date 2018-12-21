@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CinemaTheme" parent="android:Theme.Material.NoActionBar" >
+        <item name="android:colorAccent">@color/accent_material_dark_1</item>
+    </style>
+
 </resources>
