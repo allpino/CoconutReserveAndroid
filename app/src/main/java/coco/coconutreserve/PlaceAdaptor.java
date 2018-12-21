@@ -11,7 +11,7 @@ import android.widget.TextView;
 import coco.coconutreserve.assets.core.Place;
 
 
-public class PlaceAdaptor extends ArrayAdapter<Place[]>
+public class PlaceAdaptor extends ArrayAdapter<Place>
 {
     private static class ViewHolder {
         TextView placeName;

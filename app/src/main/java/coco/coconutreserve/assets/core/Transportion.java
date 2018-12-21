@@ -11,9 +11,11 @@ public class Transportion implements Place {
     private int capacity;
     private String type;
     private TransportionSeat[][] transportionSeats;
+    private int pictureId;
 
 
-    public Transportion(String name, String description, double score, int numOfSeats, String type) {
+    public Transportion(String name, String description, double score, int numOfSeats, String type,
+                        int pictureId) {
 
         if(name == null || description == null || score == 0 || score > 10.0 || numOfSeats == 0)
         {
@@ -29,6 +31,7 @@ public class Transportion implements Place {
         this.score = score;
         this.numOfSeats = numOfSeats;
         this.type = type;
+        this.pictureId = pictureId;
 
 
         transportionSeats = new TransportionSeat[4][numOfSeats/4];
@@ -37,7 +40,7 @@ public class Transportion implements Place {
             for (int j = 0; j < numOfSeats/4 ; j++)
             {
                 TransportionSeat seat = new TransportionSeat((char)(65 +i) + "-" + j,
-                        Utils.randomWithRange(10,15),4,numOfSeats/4);
+                        Utils.randomWithRange(10,15),4,numOfSeats/4); // add pics
                 transportionSeats[i][j] = seat;
                 capacity += seat.getCapacity();
 
@@ -80,6 +83,10 @@ public class Transportion implements Place {
     @Override
     public SeatAndRoom[][] getSeats(int indexOfMid) {
         return transportionSeats;
+    }
 
+    @Override
+    public int getPicture() {
+        return pictureId;
     }
 }

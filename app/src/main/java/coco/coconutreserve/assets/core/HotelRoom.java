@@ -9,8 +9,10 @@ public class HotelRoom implements SeatAndRoom{
     private int price;
     private int rowCount;
     private int columnCount;
+    private int pictureId;
 
-    public HotelRoom(String roomName, int roomCapacity, int price, int rowCount, int columnCount )
+    public HotelRoom(String roomName, int roomCapacity, int price, int rowCount, int columnCount,
+                     int pictureId)
     {
         this.roomName = roomName;
         this.roomCapacity = roomCapacity;
@@ -18,6 +20,7 @@ public class HotelRoom implements SeatAndRoom{
         this.price = price;
         this.rowCount = rowCount;
         this.columnCount = columnCount;
+        this.pictureId = pictureId;
     }
 
     @Override
@@ -60,5 +63,8 @@ public class HotelRoom implements SeatAndRoom{
         return columnCount;
     }
 
-
+    @Override
+    public int getPicture() {
+        return pictureId;
+    }
 }

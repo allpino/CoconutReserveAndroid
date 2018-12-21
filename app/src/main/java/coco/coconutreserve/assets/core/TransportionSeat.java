@@ -8,14 +8,16 @@ public class TransportionSeat implements SeatAndRoom{
     private boolean isTaken;
     private int rowCount;
     private int columnCount;
+    private int pictureId;
 
-    public TransportionSeat(String name, int price, int rowCount, int columnCount) {
+    public TransportionSeat(String name, int price, int rowCount, int columnCount, int pictureId) {
         this.name = name;
         this.price = price;
         isTaken = false;
         capacity = 1;
         this.rowCount = rowCount;
         this.columnCount = columnCount;
+        this.pictureId = pictureId;
     }
 
     @Override
@@ -56,5 +58,10 @@ public class TransportionSeat implements SeatAndRoom{
     @Override
     public int getColumnCount() {
         return columnCount;
+    }
+
+    @Override
+    public int getPicture() {
+        return pictureId;
     }
 }

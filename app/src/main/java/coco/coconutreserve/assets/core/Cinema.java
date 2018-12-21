@@ -9,8 +9,9 @@ public class Cinema implements Place{
     private int numOfSaloons;
     private int capacity;
     private CinemaSaloon[] cinemaSaloons;
+    private int pictureId;
 
-    public Cinema(String name, String description, int numOfSaloons, double score)
+    public Cinema(String name, String description, int numOfSaloons, double score, int pictureId)
     {
         if (name == null || description == null || score == 0 || numOfSaloons == 0 )
         {
@@ -26,13 +27,14 @@ public class Cinema implements Place{
         this.score = score;
         this.capacity = 0;
         this.numOfSaloons = numOfSaloons;
+        this.pictureId = pictureId;
 
         cinemaSaloons = new CinemaSaloon[numOfSaloons];
         for (int i = 0; i < numOfSaloons; i++)
         {
             int randomNumber = Utils.randomWithRange(0,4);
             CinemaSaloon saloon = new CinemaSaloon("S"+i, Films.films[randomNumber],
-                    (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5));
+                    (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5)); // add pics
             cinemaSaloons[i] = saloon;
 
             capacity += saloon.getCapacity();
@@ -81,5 +83,10 @@ public class Cinema implements Place{
 
     public String toString(){
         return name;
+    }
+
+    @Override
+    public int getPicture() {
+        return pictureId;
     }
 }

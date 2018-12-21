@@ -9,8 +9,9 @@ public class Hotel implements Place{
     private HotelRoom[][] hotelRooms;
     private int numOfRooms;
     private double score;
+    private int pictureId;
 
-    public Hotel(String name, String description, int numOfRooms, double score)
+    public Hotel(String name, String description, int numOfRooms, double score, int pictureId)
     {
         if (name == null || description == null || numOfRooms == 0 || score == 0)
         {
@@ -25,6 +26,7 @@ public class Hotel implements Place{
         this.description = description;
         this.numOfRooms = numOfRooms;
         this.score = score;
+        this.pictureId = pictureId;
         capacity = 0;
 
         hotelRooms = new HotelRoom[2][numOfRooms/2];
@@ -34,7 +36,7 @@ public class Hotel implements Place{
             {
                 int room_cap = Utils.randomWithRange(1,5);
                 HotelRoom room = new HotelRoom((char)(65 +i) + "-" + j, room_cap,
-                        room_cap*10,numOfRooms/2,2);
+                        room_cap*10,numOfRooms/2,2); // add pics
                 hotelRooms[i][j] = room;
                 this.capacity += room_cap;
             }
@@ -84,5 +86,10 @@ public class Hotel implements Place{
 
     public HotelRoom[][] getHotelRooms() {
         return hotelRooms;
+    }
+
+    @Override
+    public int getPicture() {
+        return pictureId;
     }
 }
