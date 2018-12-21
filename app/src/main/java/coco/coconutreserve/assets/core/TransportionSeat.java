@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import coco.coconutreserve.R;
+
 public class TransportionSeat implements SeatAndRoom{
 
     private String name;
@@ -48,6 +50,7 @@ public class TransportionSeat implements SeatAndRoom{
     @Override
     public void setAsTaken() {
         isTaken = true;
+        pictureId = R.drawable.seat_full;
     }
 
     @Override

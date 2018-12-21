@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import coco.coconutreserve.R;
+
 public class Cinema implements Place{
 
     //IMPORTANT: If new variable is added, change Init as well
@@ -34,7 +36,8 @@ public class Cinema implements Place{
         {
             int randomNumber = Utils.randomWithRange(0,4);
             CinemaSaloon saloon = new CinemaSaloon("S"+i, Films.films[randomNumber],
-                    (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5)); // add pics
+                    (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5),
+                    R.drawable.saloon); // add pics
             cinemaSaloons[i] = saloon;
 
             capacity += saloon.getCapacity();

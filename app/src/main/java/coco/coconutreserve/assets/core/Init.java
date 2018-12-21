@@ -1,4 +1,7 @@
 package coco.coconutreserve.assets.core;
+
+import coco.coconutreserve.R;
+
 public class Init {
 
     private Place[] data;
@@ -15,7 +18,7 @@ public class Init {
                 Hotel hotel = new Hotel("Cool Hotel Name #"+i,
                                         "Cool Hotel Description#"+i,
                                         Utils.randomWithRange(10,30),
-                                        Utils.randomWithRange(4.0,9.0));
+                                        Utils.randomWithRange(4.0,9.0), R.drawable.hotel);
                 data[i] = hotel;
 
             }
@@ -29,7 +32,7 @@ public class Init {
                 Cinema cinema = new Cinema("Cool Cinema Name #"+i,
                         "Cool Cinema Description#"+i,
                         Utils.randomWithRange(4,9),
-                        Utils.randomWithRange(2.0,9));
+                        Utils.randomWithRange(2.0,9),R.drawable.cinema);
                 data[i] = cinema;
             }
         }

@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import coco.coconutreserve.R;
+
 public class Hotel implements Place{
 
     //IMPORTANT: If new variable is added, change Init as well
@@ -36,7 +38,7 @@ public class Hotel implements Place{
             {
                 int room_cap = Utils.randomWithRange(1,5);
                 HotelRoom room = new HotelRoom((char)(65 +i) + "-" + j, room_cap,
-                        room_cap*10,numOfRooms/2,2); // add pics
+                        room_cap*10,numOfRooms/2,2, R.drawable.bed_empty); // add pics
                 hotelRooms[i][j] = room;
                 this.capacity += room_cap;
             }

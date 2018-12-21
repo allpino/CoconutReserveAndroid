@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import coco.coconutreserve.R;
+
 public class CinemaSaloon {
 
     private String name;
@@ -9,14 +11,16 @@ public class CinemaSaloon {
     private CinemaSeat[][] seats;
     private int rowCount;
     private int columnCount;
+    private int pictureId;
 
-    public CinemaSaloon(String name, Films.Film film, int price, int rowCount, int columnCount) {
+    public CinemaSaloon(String name, Films.Film film, int price, int rowCount, int columnCount, int pictureId) {
         this.name = name;
         this.film = film;
         this.price = price;
         capacity = 0;
         this.rowCount = rowCount;
         this.columnCount = columnCount;
+        this.pictureId = pictureId;
 
         this.seats = new CinemaSeat[rowCount][columnCount];
 
@@ -24,7 +28,7 @@ public class CinemaSaloon {
         {
             for (int j = 0; j < columnCount; j++)
             {
-                CinemaSeat seat = new CinemaSeat((char)(65 +i) + "-" + j, price, rowCount, columnCount);
+                CinemaSeat seat = new CinemaSeat((char)(65 +i) + "-" + j, price, rowCount, columnCount, R.drawable.seat_empty);
                 seats[i][j] = seat;
                 capacity = rowCount * columnCount;
             }
@@ -34,6 +38,10 @@ public class CinemaSaloon {
 
     public String getName() {
         return name;
+    }
+
+    public int getPicture() {
+        return pictureId;
     }
 
     public int getCapacity() {
