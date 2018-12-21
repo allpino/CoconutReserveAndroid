@@ -20,9 +20,9 @@
         app:menu="@menu/navigation" />
 
     <ListView
-        android:layout_width="387dp"
-        android:layout_height="455dp"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="-2dp" />
+        android:id="@+id/activity_list_of_films"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
 
 </android.support.constraint.ConstraintLayout>

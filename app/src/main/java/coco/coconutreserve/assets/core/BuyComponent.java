@@ -28,7 +28,7 @@ public class BuyComponent
 
     public boolean buyWithPoints(User user, Reservation reservation)
     {
-        if (user.appType.equals( Constants.CINEMA )&& user.userType.equals(Constants.PREMIUM) &&
+        if (user.getAppType().equals( Constants.CINEMA )&& user.getUserType().equals(Constants.PREMIUM) &&
                 reservation.getPlace() instanceof Cinema )
         {
             if (user.getPoints() >= reservation.getPrice())
