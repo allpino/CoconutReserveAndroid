@@ -7,6 +7,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,7 +26,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         Init init = new Init(Constants.CINEMA);
 
         Cinema[] cinemas = (Cinema[]) init.getData();
@@ -32,7 +33,17 @@ public class Dashboard extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.activity_list_of_films);
         FilmAdaptor filmAdaptor = new FilmAdaptor(this, Films.films);
         listView.setAdapter(filmAdaptor);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+//                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(),SaloonViewAsList.class); /// burda önce filmler mi olucak yoksa sinemalar mı gözükecek ?
+                intent.putExtra("name",cinemas[i]);
+                startActivity(intent);
+
+            }
+        });
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
