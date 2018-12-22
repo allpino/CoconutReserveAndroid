@@ -16,7 +16,6 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
     private static class ViewHolder {
         TextView placeName;
         TextView placeDescription;
-        TextView placeCapacity;
         TextView placeScore;
         ImageView placePic;
     }
@@ -53,16 +52,15 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
         {
             if (parent.getContext() instanceof SaloonViewAsList) // I will fix this after activities are complete
             {
-                convertView = layoutInflater.inflate(R.layout.list_of_films,null); // I know this is wrong atm
+                convertView = layoutInflater.inflate(R.layout.place_view_listelement,null); // I know this is wrong atm
             }
 
-            /*holder = new ViewHolder();
-            holder.placeName = (TextView) convertView.findViewById(R.id.place_name);
-            holder.placeCapacity = (TextView) convertView.findViewById(R.id.place_capacity);
-            holder.placeDescription = (TextView) convertView.findViewById(R.id.place_description);
-            holder.placeScore = (TextView) convertView.findViewById(R.id.place_score);
-            holder.placePic = (ImageView) convertView.findViewById(R.id.place_pic);
-            convertView.setTag( holder);*/
+            holder = new ViewHolder();
+            holder.placeName = (TextView) convertView.findViewById(R.id.saloonName);
+            holder.placeDescription = (TextView) convertView.findViewById(R.id.saloonText);
+            holder.placeScore = (TextView) convertView.findViewById(R.id.saloonScore2);
+            holder.placePic = (ImageView) convertView.findViewById(R.id.placeImage);
+            convertView.setTag( holder);
         }
         else
         {
