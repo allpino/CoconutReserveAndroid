@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import java.util.ArrayList;
+
 import coco.coconutreserve.R;
 
 public class Cinema implements Place{
@@ -32,10 +34,15 @@ public class Cinema implements Place{
         this.pictureId = pictureId;
 
         cinemaSaloons = new CinemaSaloon[numOfSaloons];
+        ArrayList<Films.Film> films = new ArrayList<>();
+        for (int i = 0; i < Films.films.length ; i++) {
+            films.add(Films.films[i]);
+        }
+
         for (int i = 0; i < numOfSaloons; i++)
         {
-            int randomNumber = Utils.randomWithRange(0,4);
-            CinemaSaloon saloon = new CinemaSaloon("S"+i, Films.films[randomNumber],
+            int randomNumber = Utils.randomWithRange(0,films.size()-1);
+            CinemaSaloon saloon = new CinemaSaloon("S"+i, films.remove(randomNumber) ,
                     (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5),
                     R.drawable.saloon); // add pics
             cinemaSaloons[i] = saloon;
