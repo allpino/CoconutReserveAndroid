@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Place;
 
 
@@ -24,6 +25,7 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
     private final Context context;
     private ViewHolder holder;
     private final Place[] places;
+    private String appType;
 
 
     public PlaceAdaptor(Context context, Place[] places)
@@ -53,6 +55,7 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
             if (parent.getContext() instanceof SaloonViewAsList) // I will fix this after activities are complete
             {
                 convertView = layoutInflater.inflate(R.layout.place_view_listelement,null); // I know this is wrong atm
+                appType = Constants.CINEMA;
             }
 
             holder = new ViewHolder();
@@ -80,8 +83,9 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
 
         return convertView;
 
-
-
     }
 
+    public String getAppType() {
+        return appType;
+    }
 }

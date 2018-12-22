@@ -10,7 +10,7 @@ public class HotelReservationSystem {
 
     public static void main(String[] args) {
 
-        Init init = new Init(Constants.HOTEL);
+        Init init = Init.getInstance(Constants.CINEMA);
 
         Hotel[] hotels = (Hotel[]) init.getData();
 

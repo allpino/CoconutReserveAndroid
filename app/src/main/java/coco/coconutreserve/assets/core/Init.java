@@ -4,18 +4,19 @@ import coco.coconutreserve.R;
 
 public class Init {
 
+
     private Place[] data;
-    private User[] users;
+    private static Init instance = null;
 
 
-    public Init(String type)
+    private Init(String type)
     {
         if (type.equals(Constants.HOTEL))
         {
             data = new Hotel[Constants.NUM_OF_HOTELS];
             for (int i = 0; i < Constants.NUM_OF_HOTELS; i++)
             {
-                Hotel hotel = new Hotel("Cool Hotel Name #"+i,
+                Hotel hotel = new Hotel(i,"Cool Hotel Name #"+i,
                                         "Cool Hotel Description#"+i,
                                         Utils.randomWithRange(10,30),
                                         Utils.randomWithRange(4.0,9.0), R.drawable.hotel);
@@ -29,7 +30,7 @@ public class Init {
             data = new Cinema[Constants.NUM_OF_CINEMAS];
             for (int i = 0; i < Constants.NUM_OF_CINEMAS; i++)
             {
-                Cinema cinema = new Cinema("Cool Cinema Name #"+i,
+                Cinema cinema = new Cinema(i,"Cool Cinema Name #"+i,
                         "Cool Cinema Description#"+i,
                         Utils.randomWithRange(1,3),
                         Utils.randomWithRange(2.0,9),R.drawable.cinema);
@@ -47,6 +48,14 @@ public class Init {
             throw new NullPointerException("Something went wrong in Init");
         }
 
+    }
+
+    public static Init getInstance(String type){
+        if (instance == null)
+        {
+            instance = new Init(type);
+        }
+        return  instance;
     }
 
     public Place[] getData() {

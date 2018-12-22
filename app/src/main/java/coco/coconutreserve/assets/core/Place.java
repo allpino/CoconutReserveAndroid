@@ -18,4 +18,6 @@ public interface Place {
 
     int getPicture();
 
+    int getId();
+
 }

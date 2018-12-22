@@ -5,6 +5,7 @@ import coco.coconutreserve.R;
 public class Hotel implements Place{
 
     //IMPORTANT: If new variable is added, change Init as well
+    private int hotelId;
     private String name;
     private String description;
     private int capacity;
@@ -13,7 +14,7 @@ public class Hotel implements Place{
     private double score;
     private int pictureId;
 
-    public Hotel(String name, String description, int numOfRooms, double score, int pictureId)
+    public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId)
     {
         if (name == null || description == null || numOfRooms == 0 || score == 0)
         {
@@ -24,6 +25,7 @@ public class Hotel implements Place{
             throw new ArithmeticException("Score can not be higher than 10");
         }
 
+        this.hotelId = id;
         this.name = name;
         this.description = description;
         this.numOfRooms = numOfRooms;
@@ -32,15 +34,17 @@ public class Hotel implements Place{
         capacity = 0;
 
         hotelRooms = new HotelRoom[2][numOfRooms/2];
+        int cid = 0;
         for (int i = 0; i < 2; i++)
         {
             for (int j = 0; j <  numOfRooms/2; j++)
             {
                 int room_cap = Utils.randomWithRange(1,5);
-                HotelRoom room = new HotelRoom((char)(65 +i) + "-" + j, room_cap,
+                HotelRoom room = new HotelRoom(cid,(char)(65 +i) + "-" + j, room_cap,
                         room_cap*10,numOfRooms/2,2, R.drawable.bed_empty); // add pics
                 hotelRooms[i][j] = room;
                 this.capacity += room_cap;
+                cid++;
             }
         }
 
@@ -93,5 +97,10 @@ public class Hotel implements Place{
     @Override
     public int getPicture() {
         return pictureId;
+    }
+
+    @Override
+    public int getId() {
+        return hotelId;
     }
 }

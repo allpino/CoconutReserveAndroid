@@ -4,6 +4,7 @@ import coco.coconutreserve.R;
 
 public class TransportionSeat implements SeatAndRoom{
 
+    private int id;
     private String name;
     private int capacity;
     private int price;
@@ -12,11 +13,12 @@ public class TransportionSeat implements SeatAndRoom{
     private int columnCount;
     private int pictureId;
 
-    public TransportionSeat(String name, int price, int rowCount, int columnCount, int pictureId) {
+    public TransportionSeat(int id, String name, int price, int rowCount, int columnCount, int pictureId) {
         this.name = name;
         this.price = price;
         isTaken = false;
         capacity = 1;
+        this.id = id;
         this.rowCount = rowCount;
         this.columnCount = columnCount;
         this.pictureId = pictureId;
@@ -66,5 +68,10 @@ public class TransportionSeat implements SeatAndRoom{
     @Override
     public int getPicture() {
         return pictureId;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

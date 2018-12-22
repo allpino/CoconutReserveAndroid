@@ -11,8 +11,10 @@ public class CinemaSeat implements SeatAndRoom {
     private int rowCount;
     private int columnCount;
     private int pictureId;
+    private int seatId;
 
-    public CinemaSeat(String name, int price, int rowCount, int columnCount, int pictureId) {
+    public CinemaSeat(int id, String name, int price, int rowCount, int columnCount, int pictureId) {
+        this.seatId = id;
         this.name = name;
         this.price = price;
         isTaken = false;
@@ -63,5 +65,10 @@ public class CinemaSeat implements SeatAndRoom {
     @Override
     public int getColumnCount() {
         return columnCount;
+    }
+
+    @Override
+    public int getId() {
+        return seatId;
     }
 }

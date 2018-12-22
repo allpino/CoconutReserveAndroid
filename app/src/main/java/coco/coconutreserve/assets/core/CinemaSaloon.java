@@ -4,6 +4,7 @@ import coco.coconutreserve.R;
 
 public class CinemaSaloon {
 
+    private int saloonId;
     private String name;
     private int capacity;
     private Films.Film film;
@@ -13,7 +14,9 @@ public class CinemaSaloon {
     private int columnCount;
     private int pictureId;
 
-    public CinemaSaloon(String name, Films.Film film, int price, int rowCount, int columnCount, int pictureId) {
+    public CinemaSaloon(int id, String name, Films.Film film, int price, int rowCount, int columnCount, int pictureId) {
+
+        this.saloonId = id;
         this.name = name;
         this.film = film;
         this.price = price;
@@ -24,13 +27,15 @@ public class CinemaSaloon {
 
         this.seats = new CinemaSeat[rowCount][columnCount];
 
+        int cid = 0;
         for (int i = 0; i < rowCount; i++)
         {
             for (int j = 0; j < columnCount; j++)
             {
-                CinemaSeat seat = new CinemaSeat((char)(65 +i) + "-" + j, price, rowCount, columnCount, R.drawable.seat_empty);
+                CinemaSeat seat = new CinemaSeat(cid,(char)(65 +i) + "-" + j, price, rowCount, columnCount, R.drawable.seat_empty);
                 seats[i][j] = seat;
                 capacity = rowCount * columnCount;
+                cid++;
             }
         }
 
@@ -56,4 +61,7 @@ public class CinemaSaloon {
         return film;
     }
 
+    public int getSaloonId() {
+        return saloonId;
+    }
 }

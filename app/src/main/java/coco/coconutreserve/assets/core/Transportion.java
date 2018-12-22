@@ -6,6 +6,7 @@ import coco.coconutreserve.R;
 public class Transportion implements Place {
 
     //IMPORTANT: If new variable is added, change Init as well
+    private int id;
     private String name;
     private String description;
     private double score;
@@ -16,7 +17,7 @@ public class Transportion implements Place {
     private int pictureId;
 
 
-    public Transportion(String name, String description, double score, int numOfSeats, String type,
+    public Transportion(int id, String name, String description, double score, int numOfSeats, String type,
                         int pictureId) {
 
         if(name == null || description == null || score == 0 || score > 10.0 || numOfSeats == 0)
@@ -28,6 +29,7 @@ public class Transportion implements Place {
             throw new NullPointerException("Type must be defined constant");
         }
 
+        this.id = id;
         this.name = name;
         this.description = description;
         this.score = score;
@@ -37,15 +39,16 @@ public class Transportion implements Place {
 
 
         transportionSeats = new TransportionSeat[4][numOfSeats/4];
+        int cis = 0;
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < numOfSeats/4 ; j++)
             {
-                TransportionSeat seat = new TransportionSeat((char)(65 +i) + "-" + j,
+                TransportionSeat seat = new TransportionSeat(cis,(char)(65 +i) + "-" + j,
                         Utils.randomWithRange(10,15),4,numOfSeats/4, R.drawable.seat_empty); // add pics
                 transportionSeats[i][j] = seat;
                 capacity += seat.getCapacity();
-
+                cis++;
             }
         }
 
@@ -90,5 +93,10 @@ public class Transportion implements Place {
     @Override
     public int getPicture() {
         return pictureId;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

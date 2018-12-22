@@ -5,6 +5,7 @@ import coco.coconutreserve.R;
 public class HotelRoom implements SeatAndRoom{
 
     //IMPORTANT: If new variable is added, change Init as well
+    private int roomId;
     private String roomName;
     private int roomCapacity;
     private boolean isTaken;
@@ -13,9 +14,10 @@ public class HotelRoom implements SeatAndRoom{
     private int columnCount;
     private int pictureId;
 
-    public HotelRoom(String roomName, int roomCapacity, int price, int rowCount, int columnCount,
+    public HotelRoom(int id, String roomName, int roomCapacity, int price, int rowCount, int columnCount,
                      int pictureId)
     {
+        this.roomId = id;
         this.roomName = roomName;
         this.roomCapacity = roomCapacity;
         this.isTaken = false;
@@ -69,5 +71,10 @@ public class HotelRoom implements SeatAndRoom{
     @Override
     public int getPicture() {
         return pictureId;
+    }
+
+    @Override
+    public int getId() {
+        return roomId;
     }
 }

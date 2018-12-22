@@ -23,7 +23,7 @@ public class SaloonViewAsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saloon_view_as_list);
 
-        Init init = new Init(Constants.CINEMA);
+        Init init = Init.getInstance(Constants.CINEMA);
 
         Cinema[] cinemas = (Cinema[]) init.getData();
         int filmId = getIntent().getExtras().getInt("filmId");
@@ -54,8 +54,14 @@ public class SaloonViewAsList extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getApplicationContext(), SeatSelection.class);
-               // Cinema selectedFilm = (Films.Film) listView.getItemAtPosition(i);
-               //  intent.putExtra("filmId", selectedFilm.getId());
+                //Cinema selectedCinema = (Cinema) listView.getItemAtPosition(i);
+                Cinema selectedCinema = (Cinema) places[0];
+
+                CinemaSaloon saloon = selectedCinema.getSaloonByFilm(filmId);
+
+                intent.putExtra("saloonId", saloon.getSaloonId());
+                intent.putExtra("appType", placeAdaptor.getAppType());
+
                 startActivity(intent);
             }}
         );

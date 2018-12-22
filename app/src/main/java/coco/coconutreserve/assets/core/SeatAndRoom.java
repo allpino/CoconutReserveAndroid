@@ -10,5 +10,6 @@ public interface SeatAndRoom {
     int getRowCount();
     int getColumnCount();
     int getPicture();
+    int getId();
 
 }

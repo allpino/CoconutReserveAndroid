@@ -7,6 +7,7 @@ import coco.coconutreserve.R;
 public class Cinema implements Place{
 
     //IMPORTANT: If new variable is added, change Init as well
+    private int cinemaId;
     private String name;
     private String description;
     private double score;
@@ -15,7 +16,7 @@ public class Cinema implements Place{
     private CinemaSaloon[] cinemaSaloons;
     private int pictureId;
 
-    public Cinema(String name, String description, int numOfSaloons, double score, int pictureId)
+    public Cinema(int cinemaId, String name, String description, int numOfSaloons, double score, int pictureId)
     {
         if (name == null || description == null || score == 0 || numOfSaloons == 0 )
         {
@@ -27,6 +28,7 @@ public class Cinema implements Place{
         }
 
         this.name = name;
+        this.cinemaId = cinemaId;
         this.description = description;
         this.score = score;
         this.capacity = 0;
@@ -42,7 +44,7 @@ public class Cinema implements Place{
         for (int i = 0; i < numOfSaloons; i++)
         {
             int randomNumber = Utils.randomWithRange(0,films.size()-1);
-            CinemaSaloon saloon = new CinemaSaloon("S"+i, films.remove(randomNumber) ,
+            CinemaSaloon saloon = new CinemaSaloon(i,"S"+i, films.remove(randomNumber) ,
                     (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5),
                     R.drawable.saloon); // add pics
             cinemaSaloons[i] = saloon;
@@ -72,6 +74,18 @@ public class Cinema implements Place{
         return score;
     }
 
+    public CinemaSaloon getSaloonByFilm(int filmID)
+    {
+        for (int i = 0; i < numOfSaloons; i++)
+        {
+            if (cinemaSaloons[i].getFilm().getId() == filmID)
+            {
+                return cinemaSaloons[i];
+            }
+        }
+        return null;
+    }
+
 
     public int getNumOfSaloons() {
         return numOfSaloons;
@@ -98,5 +112,10 @@ public class Cinema implements Place{
     @Override
     public int getPicture() {
         return pictureId;
+    }
+
+    @Override
+    public int getId() {
+        return cinemaId;
     }
 }
