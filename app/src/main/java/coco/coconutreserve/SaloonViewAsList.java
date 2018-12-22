@@ -1,8 +1,11 @@
 package coco.coconutreserve;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import coco.coconutreserve.assets.core.Cinema;
 import coco.coconutreserve.assets.core.CinemaSaloon;
 import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Films;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Place;
 
@@ -25,13 +29,10 @@ public class SaloonViewAsList extends AppCompatActivity {
         int filmId = getIntent().getExtras().getInt("filmId");
         ArrayList<Cinema> avaibleCinemas = new ArrayList<>();
 
-        for (int i = 0; i < cinemas.length; i++)
-        {
+        for (int i = 0; i < cinemas.length; i++) {
             CinemaSaloon[] cinemaSaloons = cinemas[i].getCinemaSaloons();
-            for (int j = 0; j < cinemaSaloons.length ; j++)
-            {
-                if (cinemaSaloons[j].getFilm().getId() == filmId )
-                {
+            for (int j = 0; j < cinemaSaloons.length; j++) {
+                if (cinemaSaloons[j].getFilm().getId() == filmId) {
                     avaibleCinemas.add(cinemas[i]);
                 }
             }
@@ -44,10 +45,19 @@ public class SaloonViewAsList extends AppCompatActivity {
         }
 
         ListView listView = (ListView) findViewById(R.id.listViewSaloon);
-        PlaceAdaptor placeAdaptor = new PlaceAdaptor(this,places);
+        PlaceAdaptor placeAdaptor = new PlaceAdaptor(this, places);
         listView.setAdapter(placeAdaptor);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+//                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
 
-
+                Intent intent = new Intent(getApplicationContext(), SeatSelection.class);
+               // Cinema selectedFilm = (Films.Film) listView.getItemAtPosition(i);
+               //  intent.putExtra("filmId", selectedFilm.getId());
+                startActivity(intent);
+            }}
+        );
     }
 }
