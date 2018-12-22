@@ -18,7 +18,6 @@ public class FilmAdaptor extends ArrayAdapter<Films.Film>
 {
     private static class ViewHolder {
         TextView filmName;
-        TextView filmTime;
         TextView filmDuration;
         ImageView filmPic;
 
@@ -56,7 +55,6 @@ public class FilmAdaptor extends ArrayAdapter<Films.Film>
             holder = new ViewHolder();
             holder.filmName = (TextView) convertView.findViewById(R.id.film_name);
             holder.filmDuration =  (TextView) convertView.findViewById(R.id.film_duration);
-            holder.filmTime = (TextView) convertView.findViewById(R.id.film_start_time);
             holder.filmPic = (ImageView) convertView.findViewById(R.id.film_image);
             convertView.setTag( holder);
         }
@@ -71,10 +69,8 @@ public class FilmAdaptor extends ArrayAdapter<Films.Film>
         {
             holder.filmPic.setImageResource(film.getPicture());
             holder.filmName.setText(film.getFilmName());
-            String filmTime = "Start Time: " + film.getFilmTime().getHour()+ ":" + film.getFilmTime().getMinute();
             String duration = "Film Duration: " + film.getDuration().getHour()+ " Hours " + film.getDuration().getMinute() + " Minutes";
             holder.filmDuration.setText(duration);
-            holder.filmTime.setText(filmTime);
 
         }
 

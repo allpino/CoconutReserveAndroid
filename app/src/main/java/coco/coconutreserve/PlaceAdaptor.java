@@ -74,7 +74,8 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
             holder.placePic.setImageResource(place.getPicture());
             holder.placeName.setText(place.getName());
             holder.placeDescription.setText(place.getDescription());
-            holder.placeScore.setText(place.getCapacity());
+            String score = Double.toString(place.getScore()).charAt(0) + "." + Double.toString(place.getScore()).charAt(2);
+            holder.placeScore.setText(score);
         }
 
         return convertView;

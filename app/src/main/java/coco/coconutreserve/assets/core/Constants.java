@@ -8,7 +8,6 @@ public class Constants {
     public static final int NUM_OF_CINEMAS = 5;
     public static final int NUM_OF_HOTELS= 5;
     public static final int NUM_OF_TRANSPORTIONS= 5;
-    public static final int NUM_OF_USERS= 10;
 
 
     public static final String FREE = "FREE";

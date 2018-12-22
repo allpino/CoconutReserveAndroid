@@ -31,7 +31,7 @@ public class Init {
             {
                 Cinema cinema = new Cinema("Cool Cinema Name #"+i,
                         "Cool Cinema Description#"+i,
-                        Utils.randomWithRange(4,9),
+                        Utils.randomWithRange(1,3),
                         Utils.randomWithRange(2.0,9),R.drawable.cinema);
                 data[i] = cinema;
             }
@@ -47,29 +47,11 @@ public class Init {
             throw new NullPointerException("Something went wrong in Init");
         }
 
-        users = new User[Constants.NUM_OF_USERS];
-        for (int i = 0; i < Constants.NUM_OF_USERS ; i++)
-        {
-            if (i % 3 == 0)
-            {
-                users[i] = new User("Cool User name"+ i,Constants.CINEMA,i/2 == 0 ? Constants.PREMIUM: Constants.FREE);
-            }
-            else if ( i % 3 == 1)
-            {
-                users[i] = new User("Cool User Name"+i, Constants.HOTEL);
-            }
-            else if( i % 3 == 2)
-            {
-                users[i] = new User("Cool User Name"+i,Constants.TRANSPORTION);
-            }
-        }
-
     }
 
     public Place[] getData() {
         return data;
     }
-    public User[] getUsers(){return users;}
 
 }
 
