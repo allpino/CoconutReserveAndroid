@@ -32,7 +32,9 @@
         <activity
             android:name=".AccountSettings"
             android:label="@string/title_activity_account_settings" />
-        <activity android:name=".SeatSelection"></activity>
+        <activity android:name=".SeatSelection" />
+        <activity android:name=".WalletInfo" />
+        <activity android:name=".WalletPayment"></activity>
     </application>
 
 </manifest>
