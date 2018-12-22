@@ -46,7 +46,7 @@ public class Cinema implements Place{
             int randomNumber = Utils.randomWithRange(0,films.size()-1);
             int columnCount = Utils.randomWithRange(3,5);
             CinemaSaloon saloon = new CinemaSaloon(i,"S"+i, films.remove(randomNumber) ,
-                    (randomNumber+1)*5, Utils.randomWithRange(2,5)*columnCount, columnCount ,
+                    (randomNumber+1)*5, Utils.randomWithRange(5,9)*columnCount, columnCount ,
                     R.drawable.saloon); //
             cinemaSaloons[i] = saloon;
 

@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import coco.coconutreserve.assets.core.Cinema;
 import coco.coconutreserve.assets.core.CinemaSaloon;
@@ -19,6 +20,7 @@ import coco.coconutreserve.assets.core.SeatAndRoom;
 
 public class SeatSelection extends AppCompatActivity {
     Button passBut;
+    SeatAndRoom selectedSeat = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,17 +66,18 @@ public class SeatSelection extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     //                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
+                selectedSeat = (SeatAndRoom) gridView.getItemAtPosition(i);
 
-                /*Intent intent = new Intent(getApplicationContext(), SeatSelection.class);
-                Cinema selectedCinema = (Cinema) listView.getItemAtPosition(i);
+                TextView seatName = (TextView) findViewById(R.id.seatNameInfo);
+                TextView seatPrice = (TextView) findViewById(R.id.seatPrice);
+                TextView seatCapactiy = (TextView) findViewById(R.id.seatCapacity);
 
-                CinemaSaloon saloon = selectedCinema.getSaloonByFilm(filmId);
+                String name = "Seat: " + selectedSeat.getName();
+                seatName.setText(name);
+                String price =  "Price: " + selectedSeat.getPrice() + "$";
+                seatPrice.setText(price);
+                seatCapactiy.setText("Capacity:" + String.valueOf(selectedSeat.getCapacity()));
 
-                intent.putExtra("saloonId", saloon.getSaloonId());
-                intent.putExtra("placeId", selectedCinema.getId());
-                intent.putExtra("appType", placeAdaptor.getAppType());
-
-                startActivity(intent);*/
             }}
         );
 
@@ -83,8 +86,11 @@ public class SeatSelection extends AppCompatActivity {
         passBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Payment.class); /// burda önce filmler mi olucak yoksa sinemalar mı gözükecek ?
-                startActivity(intent);
+                if (selectedSeat != null)
+                {
+                    Intent intent = new Intent(getApplicationContext(),Payment.class);
+                    startActivity(intent);
+                }
             }
         });
     }
