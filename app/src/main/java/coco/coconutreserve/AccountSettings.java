@@ -3,9 +3,13 @@ package coco.coconutreserve;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.User;
 
 public class AccountSettings extends AppCompatActivity {
 
@@ -13,11 +17,34 @@ public class AccountSettings extends AppCompatActivity {
     EditText userNameET ;
     Switch premiumSwitch;
     Button walletSetings, saveAndExit;
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
+
+        user = new User("Nursolu Kedi", Constants.CINEMA, Constants.FREE);    // change it.
+
+       aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
+       userNameTV = ( TextView ) findViewById(R.id.userName);
+       userNameET = (EditText) findViewById(R.id.userNameET);
+       premiumSwitch = ( Switch ) findViewById(R.id.premiumSwitch);
+       walletSetings = (Button) findViewById(R.id.walletSettings);
+       saveAndExit = ( Button) findViewById(R.id.saveAndExit);
+
+       if(user.isPremium())
+       {
+       premiumSwitch.setChecked();
+       }
+
+       premiumSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(isChecked)
+               user.setUserType(Constants.PREMIUM);
+               else
+                   user.setUserType(Constants.FREE);
+           }});
+
 
     }
 }

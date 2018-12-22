@@ -62,6 +62,22 @@ public class User
             }
     }
 
+    public Boolean isPremium()
+    {
+        if (appType.equals(Constants.CINEMA)){
+            if (userType.equals(Constants.PREMIUM))
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else
+        {
+            throw new NullPointerException("Accessing userType which is not using cinema app");
+        }
+    }
     public int getPoints() {
         if (appType.equals(Constants.CINEMA))
         {
@@ -80,6 +96,35 @@ public class User
     public void addPoints(int val)
     {
         points += val;
+    }
+
+    public void setUserType(String userType) {
+
+        if (appType.equals(Constants.CINEMA))
+        {
+            this.userType = userType;
+        }
+        else
+        {
+            throw new NullPointerException("Accessing userType which is not using cinema app");
+        }
+
+    }
+
+    public void setPoints(int points) {
+        if (appType.equals(Constants.CINEMA))
+        {
+            this.points = points;
+        }
+        else
+        {
+            throw new NullPointerException("Accessing userType which is not using cinema app");
+        }
+
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     public void subPoints(int val)
