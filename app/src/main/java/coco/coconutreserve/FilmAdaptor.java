@@ -52,7 +52,7 @@ public class FilmAdaptor extends ArrayAdapter<Films.Film>
     public View getView(int position,  View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            convertView = layoutInflater.inflate(R.layout.activity_list_of_films,null);
+            convertView = layoutInflater.inflate(R.layout.list_of_films,null);
             holder = new ViewHolder();
             holder.filmName = (TextView) convertView.findViewById(R.id.film_name);
             holder.filmDuration =  (TextView) convertView.findViewById(R.id.film_duration);

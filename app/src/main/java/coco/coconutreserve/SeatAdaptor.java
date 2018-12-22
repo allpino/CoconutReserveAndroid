@@ -56,15 +56,15 @@ public class SeatAdaptor extends ArrayAdapter<SeatAndRoom[]>
         {
             if (parent.getContext() instanceof MainActivity) // I will fix this after activities are complete
             {
-                convertView = layoutInflater.inflate(R.layout.activity_list_of_films,null); // I know this is wrong atm
+                convertView = layoutInflater.inflate(R.layout.list_of_films,null); // I know this is wrong atm
             }
 
-            holder = new ViewHolder();
+         /*   holder = new ViewHolder();
             holder.seatName = (TextView) convertView.findViewById(R.id.seat_name);
             holder.seatCapacity = (TextView) convertView.findViewById(R.id.seat_capacity);
             holder.seatPrice = (TextView) convertView.findViewById(R.id.seat_price);
             holder.seatPic = (ImageView) convertView.findViewById(R.id.seat_pic);
-            convertView.setTag( holder);
+            convertView.setTag( holder);*/
         }
         else
         {

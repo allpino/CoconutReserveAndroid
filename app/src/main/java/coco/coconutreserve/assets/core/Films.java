@@ -8,18 +8,20 @@ import coco.coconutreserve.R;
 public class Films {
     public static class Film
     {
+        private int filmId;
         private String filmName;
         private LocalDateTime filmTime;
         private LocalTime duration;
         private int pictureId;
 
-        public Film(String filmName, LocalDateTime filmTime, LocalTime duration, int pictureId) {
+        public Film(int id, String filmName, LocalDateTime filmTime, LocalTime duration, int pictureId) {
 
             if ( filmName == null || filmTime == null || duration == null)
             {
                 throw new NullPointerException("Film parameters are null");
             }
 
+            this.filmId = id;
             this.filmName = filmName;
             this.filmTime = filmTime;
             this.duration = duration;
@@ -46,14 +48,18 @@ public class Films {
         public String toString(){
             return filmName; }
 
+
+        public int getId() {
+            return filmId;
+        }
     }
 
     public static Film[] films = {
-            new Film("Cool film", LocalDateTime.now().minusHours(3),LocalTime.parse("01:30:00"), R.drawable.film_pic),
-            new Film("Cool film2", LocalDateTime.now(),LocalTime.parse("02:30:00"), R.drawable.film_pic),
-            new Film("Cool film3", LocalDateTime.now().plusHours(4),LocalTime.parse("01:20:00"), R.drawable.film_pic),
-            new Film("Cool film4", LocalDateTime.now().plusHours(2),LocalTime.parse("02:10:00"), R.drawable.film_pic),
-            new Film("Cool film5", LocalDateTime.now().minusHours(1),LocalTime.parse("02:00:00"), R.drawable.film_pic),
+            new Film(1,"Cool film", LocalDateTime.now().minusHours(3),LocalTime.parse("01:30:00"), R.drawable.film_pic),
+            new Film(2,"Cool film2", LocalDateTime.now(),LocalTime.parse("02:30:00"), R.drawable.film_pic),
+            new Film(3,"Cool film3", LocalDateTime.now().plusHours(4),LocalTime.parse("01:20:00"), R.drawable.film_pic),
+            new Film(4,"Cool film4", LocalDateTime.now().plusHours(2),LocalTime.parse("02:10:00"), R.drawable.film_pic),
+            new Film(5,"Cool film5", LocalDateTime.now().minusHours(1),LocalTime.parse("02:00:00"), R.drawable.film_pic),
     };
 
 

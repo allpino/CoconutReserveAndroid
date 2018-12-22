@@ -26,9 +26,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        Init init = new Init(Constants.CINEMA);
-
-        Cinema[] cinemas = (Cinema[]) init.getData();
 
         ListView listView = (ListView) findViewById(R.id.activity_list_of_films);
         FilmAdaptor filmAdaptor = new FilmAdaptor(this, Films.films);
@@ -39,9 +36,9 @@ public class Dashboard extends AppCompatActivity {
 
 //                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),SaloonViewAsList.class); /// burda önce filmler mi olucak yoksa sinemalar mı gözükecek ?
-                intent.putExtra("name",cinemas[i]);
+                Films.Film selectedFilm = (Films.Film) listView.getItemAtPosition(i);
+                intent.putExtra("filmId",selectedFilm.getId());
                 startActivity(intent);
-
             }
         });
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

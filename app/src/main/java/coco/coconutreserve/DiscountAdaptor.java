@@ -1,3 +1,4 @@
+/*
 package coco.coconutreserve;
 
 import android.app.Activity;
@@ -86,4 +87,4 @@ public class DiscountAdaptor extends ArrayAdapter<Films.Film>
 
 
     }
-}
+}*/

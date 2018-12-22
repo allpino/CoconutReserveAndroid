@@ -51,18 +51,18 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            if (parent.getContext() instanceof MainActivity) // I will fix this after activities are complete
+            if (parent.getContext() instanceof SaloonViewAsList) // I will fix this after activities are complete
             {
-                convertView = layoutInflater.inflate(R.layout.activity_list_of_films,null); // I know this is wrong atm
+                convertView = layoutInflater.inflate(R.layout.list_of_films,null); // I know this is wrong atm
             }
 
-            holder = new ViewHolder();
+            /*holder = new ViewHolder();
             holder.placeName = (TextView) convertView.findViewById(R.id.place_name);
             holder.placeCapacity = (TextView) convertView.findViewById(R.id.place_capacity);
             holder.placeDescription = (TextView) convertView.findViewById(R.id.place_description);
             holder.placeScore = (TextView) convertView.findViewById(R.id.place_score);
             holder.placePic = (ImageView) convertView.findViewById(R.id.place_pic);
-            convertView.setTag( holder);
+            convertView.setTag( holder);*/
         }
         else
         {
@@ -73,7 +73,6 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
 
         if(place != null)
         {
-
             holder.placePic.setImageResource(place.getPicture());
             holder.placeName.setText(place.getName());
             holder.placeDescription.setText(place.getDescription());
