@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText( getApplicationContext(),"User SIGNED UP ",
+                Toast.makeText( getApplicationContext(),"User SIGNED IN  ",
                         Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(intent);

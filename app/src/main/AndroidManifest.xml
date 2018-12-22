@@ -19,7 +19,6 @@
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard" />
-        <activity android:name=".ListOfFilms" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home" />
