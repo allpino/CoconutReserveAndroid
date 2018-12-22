@@ -28,7 +28,10 @@
         <activity android:name=".SaloonView" />
         <activity android:name=".SaloonViewAsList" />
         <activity android:name=".Payment" />
-        <activity android:name=".PaymentSuccess"></activity>
+        <activity android:name=".PaymentSuccess" />
+        <activity
+            android:name=".AccountSettings"
+            android:label="@string/title_activity_account_settings" />
     </application>
 
 </manifest>
