@@ -9,34 +9,29 @@ public class CinemaSaloon {
     private int capacity;
     private Films.Film film;
     private int price; //This is here because film prices can change per cinema
-    private CinemaSeat[][] seats;
-    private int rowCount;
+    private CinemaSeat[] seats;
+    private int numOfSeats;
     private int columnCount;
     private int pictureId;
 
-    public CinemaSaloon(int id, String name, Films.Film film, int price, int rowCount, int columnCount, int pictureId) {
+    public CinemaSaloon(int id, String name, Films.Film film, int price, int numOfSeats, int columnCount, int pictureId) {
 
         this.saloonId = id;
         this.name = name;
         this.film = film;
         this.price = price;
         capacity = 0;
-        this.rowCount = rowCount;
+        this.numOfSeats = numOfSeats;
         this.columnCount = columnCount;
         this.pictureId = pictureId;
 
-        this.seats = new CinemaSeat[rowCount][columnCount];
+        this.seats = new CinemaSeat[numOfSeats];
 
-        int cid = 0;
-        for (int i = 0; i < rowCount; i++)
+        for (int i = 0; i < numOfSeats; i++)
         {
-            for (int j = 0; j < columnCount; j++)
-            {
-                CinemaSeat seat = new CinemaSeat(cid,(char)(65 +i) + "-" + j, price, rowCount, columnCount, R.drawable.seat_empty);
-                seats[i][j] = seat;
-                capacity = rowCount * columnCount;
-                cid++;
-            }
+            CinemaSeat seat = new CinemaSeat(i,(char)(65 +i/columnCount) + "-" + i%columnCount, price, columnCount, R.drawable.seat_empty);
+            seats[i] = seat;
+            capacity = numOfSeats;
         }
 
     }
@@ -53,7 +48,7 @@ public class CinemaSaloon {
         return capacity;
     }
 
-    public CinemaSeat[][] getSeats() {
+    public CinemaSeat[] getSeats() {
         return seats;
     }
 

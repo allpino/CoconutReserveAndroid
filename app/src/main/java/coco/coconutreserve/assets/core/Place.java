@@ -12,9 +12,9 @@ public interface Place {
 
     public String toString();
 
-    SeatAndRoom[][] getSeats();
+    SeatAndRoom[] getSeats();
 
-    SeatAndRoom[][] getSeats(int indexOfMid);
+    SeatAndRoom[] getSeats(int indexOfMid);
 
     int getPicture();
 

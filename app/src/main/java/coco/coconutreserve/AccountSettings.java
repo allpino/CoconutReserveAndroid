@@ -38,7 +38,7 @@ public class AccountSettings extends AppCompatActivity {
 
        if(user.isPremium())
        {
-            premiumSwitch.setChecked();
+            //premiumSwitch.setChecked();
        }
 
        premiumSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

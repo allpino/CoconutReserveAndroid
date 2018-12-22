@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import coco.coconutreserve.assets.core.SeatAndRoom;
 
-public class SeatAdaptor extends ArrayAdapter<SeatAndRoom[]>
+public class SeatAdaptor extends ArrayAdapter<SeatAndRoom>
 {
     private static class ViewHolder {
         TextView seatName;
@@ -22,10 +22,10 @@ public class SeatAdaptor extends ArrayAdapter<SeatAndRoom[]>
     private final LayoutInflater layoutInflater;
     private final Context context;
     private ViewHolder holder;
-    private final SeatAndRoom[][] seatAndRooms;
+    private final SeatAndRoom[] seatAndRooms;
 
 
-    public SeatAdaptor(Context context, SeatAndRoom[][] seatAndRooms)
+    public SeatAdaptor(Context context, SeatAndRoom[] seatAndRooms)
     {
         super(context,0,seatAndRooms);
         this.seatAndRooms = seatAndRooms;
@@ -40,50 +40,33 @@ public class SeatAdaptor extends ArrayAdapter<SeatAndRoom[]>
     }
 
     @Override
-    public SeatAndRoom[] getItem(int position)
+    public SeatAndRoom getItem(int position)
     {
         return seatAndRooms[position];
-    }
-
-    public SeatAndRoom getItem(int column, int row)
-    {
-        return seatAndRooms[column][row];
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            if (parent.getContext() instanceof MainActivity) // I will fix this after activities are complete
+            if (parent.getContext() instanceof SeatSelection) // I will fix this after activities are complete
             {
-                convertView = layoutInflater.inflate(R.layout.list_of_films,null); // I know this is wrong atm
+                convertView = layoutInflater.inflate(R.layout.seat_view_listelement,null); // I know this is wrong atm
             }
 
-         /*   holder = new ViewHolder();
-            holder.seatName = (TextView) convertView.findViewById(R.id.seat_name);
-            holder.seatCapacity = (TextView) convertView.findViewById(R.id.seat_capacity);
-            holder.seatPrice = (TextView) convertView.findViewById(R.id.seat_price);
-            holder.seatPic = (ImageView) convertView.findViewById(R.id.seat_pic);
-            convertView.setTag( holder);*/
+            holder = new ViewHolder();
+            holder.seatName = (TextView) convertView.findViewById(R.id.seatName);
+            holder.seatPic = (ImageView) convertView.findViewById(R.id.seatPic);
+            convertView.setTag( holder);
         }
         else
         {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        SeatAndRoom[] seatAndRoom = seatAndRooms[position];
 
-        if(seatAndRoom != null)
-        {
-            for (int i = 0; i < seatAndRoom.length; i++)
-            {
-                holder.seatPic.setImageResource(seatAndRoom[i].getPicture());
-                holder.seatName.setText(seatAndRoom[i].getName());
-                holder.seatPrice.setText(seatAndRoom[i].getPrice());
-                holder.seatCapacity.setText(seatAndRoom[i].getCapacity());
-            }
-
-        }
+        holder.seatPic.setImageResource(seatAndRooms[position].getPicture());
+        holder.seatName.setText(seatAndRooms[position].getName());
 
         return convertView;
 

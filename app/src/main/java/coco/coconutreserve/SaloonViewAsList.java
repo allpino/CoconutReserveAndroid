@@ -54,12 +54,12 @@ public class SaloonViewAsList extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getApplicationContext(), SeatSelection.class);
-                //Cinema selectedCinema = (Cinema) listView.getItemAtPosition(i);
-                Cinema selectedCinema = (Cinema) places[0];
+                Cinema selectedCinema = (Cinema) listView.getItemAtPosition(i);
 
                 CinemaSaloon saloon = selectedCinema.getSaloonByFilm(filmId);
 
                 intent.putExtra("saloonId", saloon.getSaloonId());
+                intent.putExtra("placeId", selectedCinema.getId());
                 intent.putExtra("appType", placeAdaptor.getAppType());
 
                 startActivity(intent);

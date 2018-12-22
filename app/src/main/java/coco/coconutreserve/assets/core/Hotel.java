@@ -9,7 +9,7 @@ public class Hotel implements Place{
     private String name;
     private String description;
     private int capacity;
-    private HotelRoom[][] hotelRooms;
+    private HotelRoom[] hotelRooms;
     private int numOfRooms;
     private double score;
     private int pictureId;
@@ -33,19 +33,17 @@ public class Hotel implements Place{
         this.pictureId = pictureId;
         capacity = 0;
 
-        hotelRooms = new HotelRoom[2][numOfRooms/2];
-        int cid = 0;
-        for (int i = 0; i < 2; i++)
+        hotelRooms = new HotelRoom[numOfRooms];
+
+
+        for (int j = 0; j <  numOfRooms; j++)
         {
-            for (int j = 0; j <  numOfRooms/2; j++)
-            {
-                int room_cap = Utils.randomWithRange(1,5);
-                HotelRoom room = new HotelRoom(cid,(char)(65 +i) + "-" + j, room_cap,
-                        room_cap*10,numOfRooms/2,2, R.drawable.bed_empty); // add pics
-                hotelRooms[i][j] = room;
-                this.capacity += room_cap;
-                cid++;
-            }
+            int room_cap = Utils.randomWithRange(1,5);
+            HotelRoom room = new HotelRoom(j,(char)(65 +j/2) + "-" + j%2, room_cap,
+                    room_cap*10,2, R.drawable.bed_empty); // add pics
+            hotelRooms[j] = room;
+            this.capacity += room_cap;
+
         }
 
 
@@ -76,12 +74,12 @@ public class Hotel implements Place{
     }
 
     @Override
-    public SeatAndRoom[][] getSeats() {
+    public SeatAndRoom[] getSeats() {
         return hotelRooms;
     }
 
     @Override
-    public SeatAndRoom[][] getSeats(int indexOfMid) {
+    public SeatAndRoom[] getSeats(int indexOfMid) {
         return hotelRooms;
     }
 
@@ -90,7 +88,7 @@ public class Hotel implements Place{
         return score;
     }
 
-    public HotelRoom[][] getHotelRooms() {
+    public HotelRoom[] getHotelRooms() {
         return hotelRooms;
     }
 

@@ -13,7 +13,7 @@ public class Transportion implements Place {
     private int numOfSeats;
     private int capacity;
     private String type;
-    private TransportionSeat[][] transportionSeats;
+    private TransportionSeat[] transportionSeats;
     private int pictureId;
 
 
@@ -38,19 +38,16 @@ public class Transportion implements Place {
         this.pictureId = pictureId;
 
 
-        transportionSeats = new TransportionSeat[4][numOfSeats/4];
-        int cis = 0;
-        for (int i = 0; i < 4; i++)
+        transportionSeats = new TransportionSeat[numOfSeats];
+
+        for (int j = 0; j < numOfSeats ; j++)
         {
-            for (int j = 0; j < numOfSeats/4 ; j++)
-            {
-                TransportionSeat seat = new TransportionSeat(cis,(char)(65 +i) + "-" + j,
-                        Utils.randomWithRange(10,15),4,numOfSeats/4, R.drawable.seat_empty); // add pics
-                transportionSeats[i][j] = seat;
-                capacity += seat.getCapacity();
-                cis++;
-            }
+            TransportionSeat seat = new TransportionSeat(j,(char)(65 +j/4) + "-" + j%4,
+                    Utils.randomWithRange(10,15),4, R.drawable.seat_empty);
+            transportionSeats[j] = seat;
+            capacity += seat.getCapacity();
         }
+
 
     }
 
@@ -81,12 +78,12 @@ public class Transportion implements Place {
     }
 
     @Override
-    public SeatAndRoom[][] getSeats() {
+    public SeatAndRoom[] getSeats() {
         return transportionSeats;
     }
 
     @Override
-    public SeatAndRoom[][] getSeats(int indexOfMid) {
+    public SeatAndRoom[] getSeats(int indexOfMid) {
         return transportionSeats;
     }
 

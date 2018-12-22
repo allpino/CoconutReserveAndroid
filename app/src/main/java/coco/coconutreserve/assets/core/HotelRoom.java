@@ -10,11 +10,10 @@ public class HotelRoom implements SeatAndRoom{
     private int roomCapacity;
     private boolean isTaken;
     private int price;
-    private int rowCount;
     private int columnCount;
     private int pictureId;
 
-    public HotelRoom(int id, String roomName, int roomCapacity, int price, int rowCount, int columnCount,
+    public HotelRoom(int id, String roomName, int roomCapacity, int price, int columnCount,
                      int pictureId)
     {
         this.roomId = id;
@@ -22,7 +21,6 @@ public class HotelRoom implements SeatAndRoom{
         this.roomCapacity = roomCapacity;
         this.isTaken = false;
         this.price = price;
-        this.rowCount = rowCount;
         this.columnCount = columnCount;
         this.pictureId = pictureId;
     }
@@ -56,11 +54,6 @@ public class HotelRoom implements SeatAndRoom{
     @Override
     public String getName() {
         return roomName;
-    }
-
-    @Override
-    public int getRowCount(){
-        return rowCount;
     }
 
     @Override

@@ -44,9 +44,10 @@ public class Cinema implements Place{
         for (int i = 0; i < numOfSaloons; i++)
         {
             int randomNumber = Utils.randomWithRange(0,films.size()-1);
+            int columnCount = Utils.randomWithRange(3,5);
             CinemaSaloon saloon = new CinemaSaloon(i,"S"+i, films.remove(randomNumber) ,
-                    (randomNumber+1)*5, Utils.randomWithRange(3,5), Utils.randomWithRange(3,5),
-                    R.drawable.saloon); // add pics
+                    (randomNumber+1)*5, Utils.randomWithRange(2,5)*columnCount, columnCount ,
+                    R.drawable.saloon); //
             cinemaSaloons[i] = saloon;
 
             capacity += saloon.getCapacity();
@@ -96,12 +97,12 @@ public class Cinema implements Place{
     }
 
     @Override
-    public SeatAndRoom[][] getSeats(int indexOfMid) {
+    public SeatAndRoom[] getSeats(int indexOfMid) {
         return cinemaSaloons[indexOfMid].getSeats();
     }
 
     @Override
-    public SeatAndRoom[][] getSeats() {
+    public SeatAndRoom[] getSeats() {
         throw new NullPointerException("You must specify cinemaSaloon number");
     }
 

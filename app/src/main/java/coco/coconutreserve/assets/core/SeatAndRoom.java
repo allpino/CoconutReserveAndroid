@@ -7,7 +7,6 @@ public interface SeatAndRoom {
     int getPrice();
     boolean isTaken();
     void setAsTaken();
-    int getRowCount();
     int getColumnCount();
     int getPicture();
     int getId();
