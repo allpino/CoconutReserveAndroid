@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.User;
 
 public class AccountSettings extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class AccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
 
-        user = new User("Nursolu Kedi", Constants.CINEMA, Constants.FREE);    // change it.
+        user = Init.getInstance().getUser();
 
        aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
        userNameTV = ( TextView ) findViewById(R.id.userName);

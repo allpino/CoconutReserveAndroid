@@ -7,6 +7,7 @@ public class Init {
 
     private Place[] data;
     private static Init instance = null;
+    private User user;
 
 
     private Init(String type)
@@ -48,6 +49,15 @@ public class Init {
             throw new NullPointerException("Something went wrong in Init");
         }
 
+        if (type.equals(Constants.CINEMA))
+        {
+            user = new User("Nursolu Kedi",type,Constants.FREE);
+        }
+        else
+        {
+            user = new User("Nursolu Kedi",type);
+        }
+
     }
 
     public static Init getInstance(String type){
@@ -62,6 +72,9 @@ public class Init {
         return data;
     }
 
+    public User getUser() {
+        return user;
+    }
 }
 
 
