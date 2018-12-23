@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import java.util.ArrayList;
+
 import coco.coconutreserve.R;
 
 public class Init {
@@ -8,6 +10,7 @@ public class Init {
     private Place[] data;
     private static Init instance = null;
     private User user;
+    private ArrayList<Reservation> reservations;
 
 
     private Init(String type)
@@ -51,12 +54,14 @@ public class Init {
 
         if (type.equals(Constants.CINEMA))
         {
-            user = new User("Nursolu Kedi",type,Constants.FREE);
+            user = new User("Nursolu Kedi",type,Constants.PREMIUM);
         }
         else
         {
             user = new User("Nursolu Kedi",type);
         }
+
+        reservations = new ArrayList<>();
 
     }
 
@@ -74,6 +79,10 @@ public class Init {
 
     public User getUser() {
         return user;
+    }
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
     }
 }
 

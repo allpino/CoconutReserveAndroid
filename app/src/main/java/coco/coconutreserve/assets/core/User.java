@@ -21,7 +21,7 @@ public class User
             this.name = name;
             this.appType = appType;
             this.userType = userType;
-            this.wallet = new Wallet(Utils.randomWithRange(20,50),Constants.CINEMA);
+            this.wallet = new Wallet("My Wallet", Utils.randomWithRange(20,50),Constants.CINEMA);
             this.points = 0;
         }
         else
@@ -40,7 +40,7 @@ public class User
         this.name = name;
         this.appType = appType;
 
-        this.wallet = new Wallet(Utils.randomWithRange(20,50),appType);
+        this.wallet = new Wallet("My wallet" , Utils.randomWithRange(20,50),appType);
     }
 
     public String getName() {

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import coco.coconutreserve.assets.core.Cinema;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.User;
@@ -28,7 +29,7 @@ public class AccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
 
-        user = Init.getInstance().getUser();
+        user = Init.getInstance(Constants.CINEMA).getUser(); // ToDo: Fix this after
 
        aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
        userNameTV = ( TextView ) findViewById(R.id.userName);

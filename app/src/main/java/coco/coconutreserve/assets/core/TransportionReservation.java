@@ -4,43 +4,45 @@ import java.time.LocalDateTime;
 
 public class TransportionReservation implements Reservation {
 
+    private int id;
     private Transportion transportion;
     private TransportionSeat transportionSeat;
-    private LocalDateTime reservation_date;
-    private String reserver_name;
+    private LocalDateTime reservationDate;
+    private String reserverName;
     private boolean isPaid;
 
-    public TransportionReservation(Transportion transportion, TransportionSeat transportionSeat,
-                                   LocalDateTime reservation_date, String reserver_name) {
+    public TransportionReservation(int id, Transportion transportion, TransportionSeat transportionSeat,
+                                   LocalDateTime reservationDate, String reserverName) {
 
 
-        if (transportion == null || transportionSeat == null || reservation_date == null || reserver_name == null)
+        if (transportion == null || transportionSeat == null || reservationDate == null )
         {
             throw new NullPointerException("HotelReservation parameters are null!");
         }
 
+        this.id = id;
         this.transportion = transportion;
         this.transportionSeat = transportionSeat;
-        this.reservation_date = reservation_date;
-        this.reserver_name = reserver_name;
+        this.reservationDate = reservationDate;
+        this.reserverName = reserverName;
         this.isPaid = false;
     }
 
 
     @Override
     public String getReservationInfo() {
-        return "Transportion Reservation for person: " + reserver_name +"\n for transportion: " + transportion + "\n for seat: "
-                + transportionSeat + "\n for time: " + reservation_date + " \n for price: " + getPrice();
+        return "Transportion Reservation for person: " + reserverName +"\n for transportion: " + transportion + "\n for seat: "
+                + transportionSeat + "\n for time: " + reservationDate + " \n for price: " + getPrice();
     }
 
     @Override
     public String getReserverName() {
-        return reserver_name;
+        return reserverName;
     }
 
     @Override
-    public LocalDateTime getReservation_date() {
-        return reservation_date;
+    public LocalDateTime getReservationDate() {
+        return reservationDate;
     }
 
     @Override
@@ -48,6 +50,15 @@ public class TransportionReservation implements Reservation {
         return transportionSeat.getPrice();
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setReserverName(String name) {
+        this.reserverName = name;
+    }
 
     @Override
     public Place getPlace() {
@@ -62,10 +73,13 @@ public class TransportionReservation implements Reservation {
     @Override
     public void setAsPaid() {
         this.isPaid = true;
+        transportionSeat.setAsTaken();
     }
 
     @Override
     public SeatAndRoom getSeatAndRoom() {
         return transportionSeat;
     }
+
+
 }

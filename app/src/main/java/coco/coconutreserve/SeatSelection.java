@@ -9,15 +9,27 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import coco.coconutreserve.assets.core.Cinema;
+import coco.coconutreserve.assets.core.CinemaReservation;
 import coco.coconutreserve.assets.core.CinemaSaloon;
 import coco.coconutreserve.assets.core.CinemaSeat;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Films;
+import coco.coconutreserve.assets.core.Hotel;
+import coco.coconutreserve.assets.core.HotelReservation;
+import coco.coconutreserve.assets.core.HotelRoom;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Place;
+import coco.coconutreserve.assets.core.Reservation;
 import coco.coconutreserve.assets.core.SeatAndRoom;
+import coco.coconutreserve.assets.core.Transportion;
+import coco.coconutreserve.assets.core.TransportionReservation;
+import coco.coconutreserve.assets.core.TransportionSeat;
 
 public class SeatSelection extends AppCompatActivity {
     Button passBut;
@@ -90,20 +102,41 @@ public class SeatSelection extends AppCompatActivity {
         passBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectedSeat != null)
+                if (selectedSeat != null && !selectedSeat.isTaken())
                 {
                     Intent intent = new Intent(getApplicationContext(),Payment.class);
-                    String seatInfo = "Seat: " + selectedSeat.getName() +"\n"+
-                                        appType.toLowerCase()+":" + selectedPlace.getName()+"\n";
+
+                    ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
+                    int id =reservations.size();
                     if (appType.equals(Constants.CINEMA))
                     {
-                        Cinema selectedCinema = (Cinema) selectedPlace;
-                        seatInfo += "Saloon: " + selectedCinema.getSaloonByFilm(filmId).getName()+"\n"+
-                                "Film: " + Films.films[filmId].getFilmName();
+
+                        Cinema cinema = (Cinema) selectedPlace;
+                        CinemaSaloon saloon = cinema.getSaloonByFilm(filmId);
+                        reservations.add(new CinemaReservation(id,cinema,saloon,(CinemaSeat)selectedSeat,
+                                LocalDateTime.now(),null));
                     }
-                    intent.putExtra("seatInfo",seatInfo);
+                    else if (appType.equals(Constants.TRANSPORTION))
+                    {
+                        reservations.add(new TransportionReservation(id,(Transportion)selectedPlace,
+                                (TransportionSeat)selectedSeat,LocalDateTime.now(),null));
+                    }
+                    else if (appType.equals(Constants.HOTEL))
+                    {
+                        reservations.add(new HotelReservation(id,(Hotel)selectedPlace,
+                                (HotelRoom)selectedSeat,LocalDateTime.now(),null));
+                    }
+
+
+                    intent.putExtra("reservationId",id);
+                    intent.putExtra("appType",appType);
+
                     startActivity(intent);
                 }
+                else
+                    {
+                        Toast.makeText(SeatSelection.this, "You must choose an available seat! ", Toast.LENGTH_SHORT).show();
+                    }
             }
         });
     }

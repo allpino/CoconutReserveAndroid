@@ -5,40 +5,46 @@ import java.time.LocalDateTime;
 public class HotelReservation implements Reservation {
 
     private Hotel hotel;
+    private int id;
     private HotelRoom hotelRoom;
-    private LocalDateTime reservation_date;
-    private String reserver_name;
+    private LocalDateTime reservationDate;
+    private String reserverName;
     private boolean isPaid;
 
-    public HotelReservation(Hotel hotel, HotelRoom hotelRoom, LocalDateTime reservation_date, String reserver_name){
+    public HotelReservation(int id, Hotel hotel, HotelRoom hotelRoom, LocalDateTime reservationDate, String reserverName){
 
-        if (hotel == null || hotelRoom == null || reservation_date == null || reserver_name == null)
+        if (hotel == null || hotelRoom == null || reservationDate == null )
         {
             throw new NullPointerException("HotelReservation parameters are null!");
         }
-
+        this.id = id;
         this.hotel = hotel;
         this.hotelRoom = hotelRoom;
-        this.reservation_date = reservation_date;
-        this.reserver_name = reserver_name;
+        this.reservationDate = reservationDate;
+        this.reserverName = reserverName;
         this.isPaid = false;
     }
 
 
     @Override
     public String getReservationInfo() {
-        return "Hotel Reservation for person: " + reserver_name +"\n for hotel: " + hotel + "\n for room: "
-                + hotelRoom + "\n for time: " + reservation_date + " \n for price: " + getPrice();
+        return "Hotel Reservation for person: " + reserverName +"\n for hotel: " + hotel + "\n for room: "
+                + hotelRoom + "\n for time: " + reservationDate + " \n for price: " + getPrice();
     }
 
     @Override
     public String getReserverName() {
-        return reserver_name;
+        return reserverName;
     }
 
     @Override
-    public LocalDateTime getReservation_date() {
-        return reservation_date;
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public LocalDateTime getReservationDate() {
+        return reservationDate;
     }
 
     @Override
@@ -59,10 +65,18 @@ public class HotelReservation implements Reservation {
     @Override
     public void setAsPaid() {
         this.isPaid = true;
+        hotelRoom.setAsTaken();
+    }
+
+    @Override
+    public void setReserverName(String name) {
+        this.reserverName = name;
     }
 
     @Override
     public SeatAndRoom getSeatAndRoom() {
         return hotelRoom;
     }
+
+
 }

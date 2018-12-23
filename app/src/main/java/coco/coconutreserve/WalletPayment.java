@@ -8,9 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import coco.coconutreserve.assets.core.BuyComponent;
 import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Reservation;
+import coco.coconutreserve.assets.core.User;
 import coco.coconutreserve.assets.core.Wallet;
 
 // pay from wallet
@@ -21,7 +25,7 @@ public class WalletPayment extends AppCompatActivity {
     Wallet wallet;
     int currentPayment;
     BuyComponent buyComponent;
-    Reservation reservation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,26 +38,38 @@ public class WalletPayment extends AppCompatActivity {
         walletBalance = findViewById(R.id.walletBalance);
         walletNameInfo = findViewById(R.id.walletNameInfo);
         pay = findViewById(R.id.pay);
-        // user wallet info.
-        wallet = new Wallet(100, Constants.CINEMA);
-        currentPayment = 25;
-        buyComponent = new BuyComponent();
-        // instance of wallet is created.
-        //GET BUY COMPONENT WORK PROPERLY.
+
+        String appType = getIntent().getExtras().getString("appType");
+        int reservationId = getIntent().getExtras().getInt("reservationId");
+
+        ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
+
+        Reservation selectedReservation = reservations.get(reservationId);
+
+        currentPayment = selectedReservation.getPrice();
+        User user = Init.getInstance(appType).getUser();
+        BuyComponent buyComponent = new BuyComponent();
+
+        walletNameInfo.setText(user.getWallet().getName());
+        walletBalance.setText(user.getWallet().getAmount()+"");
+        paymentNumeric.setText(currentPayment+"");
 
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(currentPayment > wallet.getAmount())
+                if(buyComponent.buy(user.getWallet(),selectedReservation))
                 {
-                    Toast.makeText( getApplicationContext()," Your wallet does not have enough money. ",
-                            Toast.LENGTH_SHORT).show();
+                    // BUY COMPONENT, BUY WITH WALLET.
+                    Intent intent1 = new Intent(WalletPayment.this, PaymentSuccess.class);
+                    intent1.putExtra("appType",appType);
+                    startActivity(intent1);
+
                 }
                 else {
-                    // BUY COMPONENT, BUY WITH WALLET.
 
-                    Intent intent1 = new Intent(WalletPayment.this, PaymentSuccess.class);
-                    startActivity(intent1);
+                    Toast.makeText( getApplicationContext()," Your wallet does not have enough money. ",
+                            Toast.LENGTH_SHORT).show();
+
                 }
 
 

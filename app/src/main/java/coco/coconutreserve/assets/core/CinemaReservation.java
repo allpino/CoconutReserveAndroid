@@ -4,19 +4,21 @@ import java.time.LocalDateTime;
 
 public class CinemaReservation implements Reservation {
 
+    private int id;
     private Cinema cinema;
-    private LocalDateTime reserve_date;
+    private LocalDateTime reserveDate;
     private CinemaSaloon cinemaSaloon;
     private CinemaSeat cinemaSeat;
-    private String reserver_name;
+    private String reserverName;
     private boolean isPaid;
 
-    public CinemaReservation(Cinema cinema, CinemaSaloon cinemaSaloon, LocalDateTime reserve_date, String reserver_name) {
+    public CinemaReservation(int id, Cinema cinema, CinemaSaloon saloon, CinemaSeat cinemaSeat, LocalDateTime reserveDate, String reserverName) {
+        this.id = id;
         this.cinema = cinema;
-        this.reserve_date = reserve_date;
-        this.cinemaSaloon = cinemaSaloon;
+        this.reserveDate = reserveDate;
+        this.cinemaSaloon = saloon;
         this.cinemaSeat = cinemaSeat;
-        this.reserver_name = reserver_name;
+        this.reserverName = reserverName;
         this.isPaid = false;
     }
 
@@ -27,12 +29,12 @@ public class CinemaReservation implements Reservation {
 
     @Override
     public String getReserverName() {
-        return reserver_name;
+        return reserverName;
     }
 
     @Override
-    public LocalDateTime getReservation_date() {
-        return reserve_date;
+    public LocalDateTime getReservationDate() {
+        return reserveDate;
     }
 
     @Override
@@ -40,8 +42,18 @@ public class CinemaReservation implements Reservation {
         return cinemaSeat.getPrice();
     }
 
-    public Films.Film getFilm(){
+    public Films.Film getFilm() {
         return cinemaSaloon.getFilm();
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setReserverName(String name) {
+        this.reserverName = name;
     }
 
     @Override
@@ -62,5 +74,10 @@ public class CinemaReservation implements Reservation {
     @Override
     public void setAsPaid() {
         this.isPaid = true;
+        cinemaSeat.setAsTaken();
     }
+
+
 }
+
+

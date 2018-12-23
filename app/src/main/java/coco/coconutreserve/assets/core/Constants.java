@@ -20,6 +20,8 @@ public class Constants {
     public static final String FINGERPRINT = "FINGERPRINT";
     public static final String CREDITCARD = "CREDITCARD";
     public static final String PAYPAL = "PAYPAL";
+    public static final String WALLET = "WALLET";
+    public static final String POINTS = "POINTS";
 
 
 

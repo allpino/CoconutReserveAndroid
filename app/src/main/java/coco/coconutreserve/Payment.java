@@ -12,13 +12,21 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import coco.coconutreserve.assets.core.BuyComponent;
+import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Init;
+import coco.coconutreserve.assets.core.Reservation;
+import coco.coconutreserve.assets.core.User;
+
 public class Payment extends AppCompatActivity {
     TextView enterNameTV, paymentChooseTV , seatInfo;
     EditText nameEnter;
     RadioGroup paymentGroup;
-    RadioButton payPal, wallet, creditCard;
+    RadioButton payPal, wallet, creditCard, points;
     Button payButton;
-    Boolean isWalletSelected;
+    String paymentType = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +34,14 @@ public class Payment extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         String appType = getIntent().getExtras().getString("appType");
-        String seatInfoData= getIntent().getExtras().getString("seatInfo");
+        int reservationId = getIntent().getExtras().getInt("reservationId");
+
+        ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
+
+        Reservation selectedReservation = reservations.get(reservationId);
 
         seatInfo = findViewById(R.id.seatInfo);
-        seatInfo.setText(seatInfoData);
+        seatInfo.setText(selectedReservation.toString());
         enterNameTV = findViewById(R.id.enterNameTV);
         paymentChooseTV = findViewById(R.id.paymentTV);
         nameEnter=  findViewById(R.id.enterNameET);
@@ -38,16 +50,64 @@ public class Payment extends AppCompatActivity {
         wallet =  findViewById(R.id.useWallet) ;
         creditCard =  findViewById(R.id.creditCard) ;
         payButton =  findViewById(R.id.payButton);
-        isWalletSelected = false;
+        points = findViewById(R.id.pointsSelect);
+
+        User user = Init.getInstance(appType).getUser();
+
+        if (!appType.equals(Constants.CINEMA))
+        {
+            points.setVisibility(View.INVISIBLE);
+        }
+        else if (user.getUserType().equals(Constants.FREE))
+        {
+            points.setVisibility(View.INVISIBLE);
+        }
+
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isWalletSelected) {
-                Intent intent = new Intent(Payment.this, PaymentSuccess.class);
-                startActivity(intent);}
-                else {
+                if(!paymentType.equals(Constants.WALLET)) {
+
+                    BuyComponent buyComponent = new BuyComponent();
+                    if (paymentType.equals(Constants.POINTS))
+                    {
+
+                        if (buyComponent.buyWithPoints(user,selectedReservation))
+                        {
+                            Intent intent = new Intent(Payment.this, PaymentSuccess.class);
+                            intent.putExtra("appType",appType);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(Payment.this, "You dont have enough points ("+user.getPoints()+")", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else
+                    {
+                        if (buyComponent.buy(paymentType,selectedReservation))
+                        {
+                            Intent intent = new Intent(Payment.this, PaymentSuccess.class);
+                            intent.putExtra("appType",appType);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(Payment.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                }
+                else
+                {
                     Intent intent = new Intent(Payment.this, WalletPayment.class);
-                    startActivity(intent);}
+                    selectedReservation.setReserverName(enterNameTV.getText().toString());
+                    intent.putExtra("appType",appType);
+                    intent.putExtra("reservationId",reservationId);
+
+                    startActivity(intent);
+                }
             }
         });
 
@@ -56,16 +116,23 @@ public class Payment extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int checkedOne) {
                 if( checkedOne == R.id.useWallet)
                 {
-                    isWalletSelected = true;
+                    paymentType = Constants.WALLET;
                     Toast.makeText(Payment.this, "Wallet is selected ", Toast.LENGTH_SHORT).show();
                 }
                 else if(checkedOne == R.id.creditCard)
                 {
+                    paymentType = Constants.CREDITCARD;
                     Toast.makeText(Payment.this, "Credit Card is selected ", Toast.LENGTH_SHORT).show();
                 }
                 else if( checkedOne == R.id.payPalSelect)
                 {
+                    paymentType = Constants.PAYPAL;
                     Toast.makeText(Payment.this, "PayPal  is selected ", Toast.LENGTH_SHORT).show();
+                }
+                else if ( checkedOne == R.id.pointsSelect)
+                {
+                    paymentType = Constants.POINTS;
+                    Toast.makeText(Payment.this, "Points is selected ", Toast.LENGTH_SHORT).show();
                 }
 
             }
