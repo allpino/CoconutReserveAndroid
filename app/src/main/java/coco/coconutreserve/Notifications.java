@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import coco.coconutreserve.assets.core.Constants;
+
 public class Notifications extends AppCompatActivity {
 
 
@@ -19,12 +21,14 @@ public class Notifications extends AppCompatActivity {
 //// ON THIS PAGE, DISCOUNTS WILL BE SHOWN.
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_notifications);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case (R.id.navigation_home):
                         Intent intent = new Intent(Notifications.this, Home.class);
+                        intent.putExtra("appType",Constants.CINEMA);
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):

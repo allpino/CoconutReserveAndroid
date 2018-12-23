@@ -66,47 +66,54 @@ public class Payment extends AppCompatActivity {
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!paymentType.equals(Constants.WALLET)) {
-
-                    BuyComponent buyComponent = new BuyComponent();
-                    if (paymentType.equals(Constants.POINTS))
-                    {
-
-                        if (buyComponent.buyWithPoints(user,selectedReservation))
-                        {
-                            Intent intent = new Intent(Payment.this, PaymentSuccess.class);
-                            intent.putExtra("appType",appType);
-                            startActivity(intent);
-                        }
-                        else
-                        {
-                            Toast.makeText(Payment.this, "You dont have enough points ("+user.getPoints()+")", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else
-                    {
-                        if (buyComponent.buy(paymentType,selectedReservation))
-                        {
-                            Intent intent = new Intent(Payment.this, PaymentSuccess.class);
-                            intent.putExtra("appType",appType);
-                            startActivity(intent);
-                        }
-                        else
-                        {
-                            Toast.makeText(Payment.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-
+                if (paymentType == null)
+                {
+                    Toast.makeText(Payment.this, "You must select a payment type ", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Intent intent = new Intent(Payment.this, WalletPayment.class);
-                    selectedReservation.setReserverName(enterNameTV.getText().toString());
-                    intent.putExtra("appType",appType);
-                    intent.putExtra("reservationId",reservationId);
+                    if(!paymentType.equals(Constants.WALLET)) {
 
-                    startActivity(intent);
+                        BuyComponent buyComponent = new BuyComponent();
+                        if (paymentType.equals(Constants.POINTS))
+                        {
+
+                            if (buyComponent.buyWithPoints(user,selectedReservation))
+                            {
+                                Intent intent = new Intent(Payment.this, PaymentSuccess.class);
+                                intent.putExtra("appType",appType);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast.makeText(Payment.this, "You dont have enough points ("+user.getPoints()+")", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                        {
+                            if (buyComponent.buy(paymentType,selectedReservation))
+                            {
+                                Intent intent = new Intent(Payment.this, PaymentSuccess.class);
+                                intent.putExtra("appType",appType);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast.makeText(Payment.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(Payment.this, WalletPayment.class);
+                        intent.putExtra("appType",appType);
+                        intent.putExtra("reservationId",reservationId);
+
+                        startActivity(intent);
+                    }
+                    selectedReservation.setReserverName(nameEnter.getText().toString());
                 }
             }
         });

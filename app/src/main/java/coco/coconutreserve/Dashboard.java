@@ -42,12 +42,14 @@ public class Dashboard extends AppCompatActivity {
             }
         });
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_dashboard);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case (R.id.navigation_home):
                         Intent intent = new Intent(Dashboard.this, Home.class);
+                        intent.putExtra("appType",Constants.CINEMA);
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):

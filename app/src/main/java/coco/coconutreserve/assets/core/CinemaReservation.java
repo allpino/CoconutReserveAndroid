@@ -24,7 +24,14 @@ public class CinemaReservation implements Reservation {
 
     @Override
     public String getReservationInfo() {
-        return "Fill this I'm lazy";
+        String ret = "Film: " + getFilm().getFilmName() + "\n"+
+                "Cinema: " + cinema.getName() + "\n"+
+                "Saloon: " + cinemaSaloon.getName() + "\n";
+        if (reserverName != null)
+        {
+            ret += "Reserver Name: " + reserverName;
+        }
+        return ret;
     }
 
     @Override
@@ -54,6 +61,18 @@ public class CinemaReservation implements Reservation {
     @Override
     public void setReserverName(String name) {
         this.reserverName = name;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "Film: " + getFilm().getFilmName() + "\n"+
+                "Cinema: " + cinema.getName() + "\n"+
+                "Saloon: " + cinemaSaloon.getName() + "\n";
+        if (reserverName != null)
+        {
+            ret += "Reserver Name: " + reserverName;
+        }
+        return ret;
     }
 
     @Override

@@ -7,7 +7,17 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Init;
+import coco.coconutreserve.assets.core.Reservation;
+import coco.coconutreserve.assets.core.User;
 
 public class Home extends AppCompatActivity {
 
@@ -16,15 +26,50 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-    //// ON THIS PAGE, HISTORY OF OLD FILMS WILL BE SHOWN.
+        String appType = getIntent().getExtras().getString("appType");
+
+        Init init = Init.getInstance(appType);
+        ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
+        User user = Init.getInstance(appType).getUser();
+
+        TextView userName = findViewById(R.id.homeUserName);
+        userName.setText("Username:" + user.getName());
+        TextView wallet = findViewById(R.id.homeWallet);
+        wallet.setText("Wallet name: " + user.getWallet().getName() + ", amount: " + user.getWallet().getAmount());
+        TextView numOfReservations = findViewById(R.id.homeNumberOfReservations);
+        numOfReservations.setText("Number of Reservations: " + reservations.size()+"");
+
+
+        if (appType.equals(Constants.CINEMA))
+        {
+            TextView userType = findViewById(R.id.homeUserType);
+            userType.setText("User Type: " + user.getUserType());
+            TextView points = findViewById(R.id.homePoints);
+            points.setText("Points: " + user.getPoints());
+        }
+        else
+        {
+            TextView userType = findViewById(R.id.homeUserType);
+            TextView points = findViewById(R.id.homePoints);
+
+            userType.setVisibility(View.INVISIBLE);
+            points.setVisibility(View.INVISIBLE);
+        }
+
+        ListView listView = findViewById(R.id.activity_list_of_history);
+        HistoryAdaptor historyAdaptor = new HistoryAdaptor(this,init.getReservations());
+        listView.setAdapter(historyAdaptor);
+
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_home);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case (R.id.navigation_home):
                         Intent intent = new Intent(Home.this, Home.class);
+                        intent.putExtra("appType",Constants.CINEMA);
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):
