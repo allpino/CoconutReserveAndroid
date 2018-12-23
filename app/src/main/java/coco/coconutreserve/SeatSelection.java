@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import coco.coconutreserve.assets.core.Cinema;
 import coco.coconutreserve.assets.core.CinemaSaloon;
+import coco.coconutreserve.assets.core.CinemaSeat;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Films;
 import coco.coconutreserve.assets.core.Init;
@@ -21,6 +22,9 @@ import coco.coconutreserve.assets.core.SeatAndRoom;
 public class SeatSelection extends AppCompatActivity {
     Button passBut;
     SeatAndRoom selectedSeat = null;
+    Place selectedPlace = null;
+    int filmId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +32,12 @@ public class SeatSelection extends AppCompatActivity {
 
         int saloonID = getIntent().getExtras().getInt("saloonId");
         int placeID = getIntent().getExtras().getInt("placeId");
+        filmId = getIntent().getExtras().getInt("filmId");
         String appType = getIntent().getExtras().getString("appType");
 
-        Init init = Init.getInstance(Constants.CINEMA);
+        Init init = Init.getInstance(appType);
         Place[] places = init.getData();
 
-        Place selectedPlace = null;
         SeatAndRoom[] seatAndRooms = null;
         for (int i = 0; i < places.length; i++)
         {
@@ -89,6 +93,15 @@ public class SeatSelection extends AppCompatActivity {
                 if (selectedSeat != null)
                 {
                     Intent intent = new Intent(getApplicationContext(),Payment.class);
+                    String seatInfo = "Seat: " + selectedSeat.getName() +"\n"+
+                                        appType.toLowerCase()+":" + selectedPlace.getName()+"\n";
+                    if (appType.equals(Constants.CINEMA))
+                    {
+                        Cinema selectedCinema = (Cinema) selectedPlace;
+                        seatInfo += "Saloon: " + selectedCinema.getSaloonByFilm(filmId).getName()+"\n"+
+                                "Film: " + Films.films[filmId].getFilmName();
+                    }
+                    intent.putExtra("seatInfo",seatInfo);
                     startActivity(intent);
                 }
             }

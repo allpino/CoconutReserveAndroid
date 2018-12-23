@@ -117,9 +117,9 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <TextView
-        android:id="@+id/filmInfo"
+        android:id="@+id/seatInfo"
         android:layout_width="321dp"
-        android:layout_height="60dp"
+        android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

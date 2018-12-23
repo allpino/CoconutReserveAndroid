@@ -61,6 +61,7 @@ public class SaloonViewAsList extends AppCompatActivity {
                 intent.putExtra("saloonId", saloon.getSaloonId());
                 intent.putExtra("placeId", selectedCinema.getId());
                 intent.putExtra("appType", placeAdaptor.getAppType());
+                intent.putExtra("filmId", filmId);
 
                 startActivity(intent);
             }}

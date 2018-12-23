@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
-    TextView enterNameTV, paymentChooseTV , filmInformation;
+    TextView enterNameTV, paymentChooseTV , seatInfo;
     EditText nameEnter;
     RadioGroup paymentGroup;
     RadioButton payPal, wallet, creditCard;
@@ -25,7 +25,11 @@ public class Payment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        filmInformation = findViewById(R.id.filmInfo);
+        String appType = getIntent().getExtras().getString("appType");
+        String seatInfoData= getIntent().getExtras().getString("seatInfo");
+
+        seatInfo = findViewById(R.id.seatInfo);
+        seatInfo.setText(seatInfoData);
         enterNameTV = findViewById(R.id.enterNameTV);
         paymentChooseTV = findViewById(R.id.paymentTV);
         nameEnter=  findViewById(R.id.enterNameET);
