@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,26 +23,51 @@ import coco.coconutreserve.assets.core.Transportion;
 import coco.coconutreserve.assets.core.User;
 
 public class Home extends AppCompatActivity {
-
+    Button accountSettings, myWallet;
+    TextView userName, wallet , numOfReservations;
+    User user;
+    ArrayList<Reservation> reservations;
+    Init init;
+    String appType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        String appType = getIntent().getExtras().getString("appType");
+        appType = getIntent().getExtras().getString("appType");
 
-        Init init = Init.getInstance(appType);
-        ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
-        User user = Init.getInstance(appType).getUser();
+        init = Init.getInstance(appType);
+        reservations = Init.getInstance(appType).getReservations();
+        user = Init.getInstance(appType).getUser();
 
-        TextView userName = findViewById(R.id.homeUserName);
+        userName = findViewById(R.id.homeUserName);
         userName.setText("Username:" + user.getName());
-        TextView wallet = findViewById(R.id.homeWallet);
+        wallet = findViewById(R.id.homeWallet);
         wallet.setText("Wallet name: " + user.getWallet().getName() + ", amount: " + user.getWallet().getAmount());
-        TextView numOfReservations = findViewById(R.id.homeNumberOfReservations);
+        numOfReservations = findViewById(R.id.homeNumberOfReservations);
         numOfReservations.setText("Number of Reservations: " + reservations.size()+"");
 
 
+        accountSettings = findViewById(R.id.accountSettings);
+        myWallet = findViewById(R.id.walletSettings);
+
+        accountSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, AccountSettings.class);
+                intent.putExtra("appType",appType);
+                startActivity(intent);
+            }
+        });
+
+        myWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, WalletPayment.class);
+                intent.putExtra("appType",appType);
+                startActivity(intent);
+            }
+        });
         if (appType.equals(Constants.CINEMA))
         {
             TextView userType = findViewById(R.id.homeUserType);
