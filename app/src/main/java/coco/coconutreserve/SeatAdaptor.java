@@ -49,10 +49,9 @@ public class SeatAdaptor extends ArrayAdapter<SeatAndRoom>
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            if (parent.getContext() instanceof SeatSelection) // I will fix this after activities are complete
-            {
-                convertView = layoutInflater.inflate(R.layout.seat_view_listelement,null); // I know this is wrong atm
-            }
+
+            convertView = layoutInflater.inflate(R.layout.seat_view_listelement,null); // I know this is wrong atm
+
 
             holder = new ViewHolder();
             holder.seatName = (TextView) convertView.findViewById(R.id.seatName);

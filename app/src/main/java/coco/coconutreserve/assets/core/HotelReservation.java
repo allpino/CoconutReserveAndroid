@@ -28,8 +28,13 @@ public class HotelReservation implements Reservation {
 
     @Override
     public String getReservationInfo() {
-        return "Hotel Reservation for person: " + reserverName +"\n for hotel: " + hotel + "\n for room: "
-                + hotelRoom + "\n for time: " + reservationDate + " \n for price: " + getPrice();
+        String ret = "Location: " + hotel.getLocation().getLocationName()+ "\n"+
+                "Hotel: " + hotel.getName() + "\n";
+        if (reserverName != null)
+        {
+            ret += "Reserver Name: " + reserverName;
+        }
+        return ret;
     }
 
     @Override

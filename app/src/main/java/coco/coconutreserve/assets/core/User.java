@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import java.util.ArrayList;
+
 public class User
 {
     private String name;
@@ -7,6 +9,8 @@ public class User
     private String userType;
     private int points;
     private Wallet wallet;
+    private ArrayList<Place> wishList;
+    private ArrayList<Films.Film> watchList;
 
     public User(String name, String appType, String userType) {
 
@@ -16,13 +20,16 @@ public class User
         }
 
 
+        this.name = name;
+        this.appType = appType;
+        this.wallet = new Wallet("My Wallet", Utils.randomWithRange(20,50),appType);
+        this.wishList = new ArrayList<>();
+
         if (appType.equals(Constants.CINEMA) )
         {
-            this.name = name;
-            this.appType = appType;
             this.userType = userType;
-            this.wallet = new Wallet("My Wallet", Utils.randomWithRange(20,50),Constants.CINEMA);
             this.points = 0;
+            this.watchList = new ArrayList<>();
         }
         else
         {
@@ -134,4 +141,33 @@ public class User
             points -= val;
         }
     }
+
+    public void addToWishList(Place place)
+    {
+        if (place != null) {
+            wishList.add(place);
+        }
+    }
+
+    public void addToWatchList(Films.Film film)
+    {
+        if ( appType.equals(Constants.CINEMA ))
+        {
+            watchList.add(film);
+        }
+        else
+        {
+            throw new NullPointerException("Can't add wish list because appType is not cinema");
+        }
+    }
+
+    public ArrayList<Place> getWishList() {
+        return wishList;
+    }
+
+    public ArrayList<Films.Film> getWatchList() {
+        return watchList;
+    }
+
+
 }

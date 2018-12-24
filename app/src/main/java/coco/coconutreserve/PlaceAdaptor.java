@@ -52,7 +52,7 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
         if (convertView == null)
         {
 
-            convertView = layoutInflater.inflate(R.layout.place_view_listelement,null); // I know this is wrong atm
+            convertView = layoutInflater.inflate(R.layout.place_view_listelement,null);
 
 
             holder = new ViewHolder();

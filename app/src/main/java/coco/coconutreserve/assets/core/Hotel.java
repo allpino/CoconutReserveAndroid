@@ -14,6 +14,7 @@ public class Hotel implements Place{
     private double score;
     private int pictureId;
     private Locations.Location location;
+    private String excursions;
 
     public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId, Locations.Location location)
     {
@@ -36,7 +37,6 @@ public class Hotel implements Place{
         capacity = 0;
 
         hotelRooms = new HotelRoom[numOfRooms];
-
 
         for (int j = 0; j <  numOfRooms; j++)
         {
@@ -106,5 +106,13 @@ public class Hotel implements Place{
 
     public Locations.Location getLocation() {
         return location;
+    }
+
+    public String getExcursions() {
+        return excursions;
+    }
+
+    public void setExcursions(String excursions) {
+        this.excursions = excursions;
     }
 }

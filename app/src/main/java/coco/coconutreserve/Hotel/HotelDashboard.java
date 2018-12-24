@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import coco.coconutreserve.Home;
+import coco.coconutreserve.LocationAdaptor;
 import coco.coconutreserve.Notifications;
 import coco.coconutreserve.R;
 import coco.coconutreserve.assets.core.Constants;
@@ -28,12 +29,12 @@ public class HotelDashboard extends AppCompatActivity {
 
 
         ListView listView = (ListView) findViewById(R.id.activity_list_of_films);
-        PlaceAdaptor locationAdaptor = new PlaceAdaptor(this, Locations.locations);
+        LocationAdaptor locationAdaptor = new LocationAdaptor(this, Locations.locations);
         listView.setAdapter(locationAdaptor);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),LocationViewAsList.class);
+                Intent intent = new Intent(getApplicationContext(),HotelViewAsList.class);
                 Locations.Location selectedLocation = (Locations.Location) listView.getItemAtPosition(i);
                 intent.putExtra("locationId",selectedLocation.getId());
                 startActivity(intent);
@@ -64,27 +65,4 @@ public class HotelDashboard extends AppCompatActivity {
         });
 
     }
-
-/*
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
-*/
 }

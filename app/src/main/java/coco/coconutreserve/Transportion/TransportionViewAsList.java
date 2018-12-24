@@ -1,4 +1,4 @@
-package coco.coconutreserve.Hotel;
+package coco.coconutreserve.Transportion;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,31 +17,34 @@ import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Hotel;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Place;
+import coco.coconutreserve.assets.core.Transportion;
 
-public class LocationViewAsList extends AppCompatActivity {
+public class TransportionViewAsList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saloon_view_as_list);
 
-        Init init = Init.getInstance(Constants.HOTEL);
+        Init init = Init.getInstance(Constants.TRANSPORTION);
 
-        Hotel[] hotels = (Hotel[]) init.getData();
-        int locationId = getIntent().getExtras().getInt("locationId");
-        ArrayList<Hotel> avaibleHotels = new ArrayList<>();
+        Transportion[] transportions = (Transportion[]) init.getData();
+        int departureLocationId = getIntent().getExtras().getInt("departureLocationId");
+        int arrivalLocationId = getIntent().getExtras().getInt("arrivalLocationId");
+        ArrayList<Transportion> avaibleTransportions = new ArrayList<>();
 
-        for (int i = 0; i < hotels.length; i++)
+        for (int i = 0; i < transportions.length; i++)
         {
-            if (hotels[i].getLocation().getId() == locationId)
+            if (transportions[i].getDepartureLocation().getId() == departureLocationId &&
+                    transportions[i].getArrivalLocation().getId() == arrivalLocationId)
             {
-                avaibleHotels.add(hotels[i]);
+                avaibleTransportions.add(transportions[i]);
             }
         }
 
-        Place[] places = new Place[avaibleHotels.size()];
+        Place[] places = new Place[avaibleTransportions.size()];
 
         for (int i = 0; i < places.length; i++) {
-            places[i] = avaibleHotels.get(i);
+            places[i] = avaibleTransportions.get(i);
         }
 
         ListView listView = (ListView) findViewById(R.id.listViewSaloon);
@@ -51,13 +54,13 @@ public class LocationViewAsList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-//                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
+    //                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getApplicationContext(), SeatSelection.class);
-                Hotel selectedHotel= (Hotel) listView.getItemAtPosition(i);
+                Transportion selectedTransportion= (Transportion) listView.getItemAtPosition(i);
 
-                intent.putExtra("placeId", selectedHotel.getId());
-                intent.putExtra("appType", Constants.HOTEL);
+                intent.putExtra("placeId", selectedTransportion.getId());
+                intent.putExtra("appType", Constants.TRANSPORTION);
 
                 startActivity(intent);
             }}
