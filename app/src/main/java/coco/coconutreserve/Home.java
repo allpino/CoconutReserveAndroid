@@ -14,9 +14,11 @@ import java.util.ArrayList;
 
 import coco.coconutreserve.Cinema.CinemaDashboard;
 import coco.coconutreserve.Hotel.HotelDashboard;
+import coco.coconutreserve.Transportion.TransportionDashboard;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Reservation;
+import coco.coconutreserve.assets.core.Transportion;
 import coco.coconutreserve.assets.core.User;
 
 public class Home extends AppCompatActivity {
@@ -80,8 +82,11 @@ public class Home extends AppCompatActivity {
                         }
                         else if (appType.equals(Constants.HOTEL))
                         {
-
                             intent1 = new Intent(Home.this, HotelDashboard.class);
+                        }
+                        else if (appType.equals(Constants.TRANSPORTION))
+                        {
+                            intent1 = new Intent(Home.this,TransportionDashboard.class);
                         }
                         startActivity(intent1);
                         break;

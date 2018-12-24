@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import coco.coconutreserve.Cinema.CinemaDashboard;
 import coco.coconutreserve.Hotel.HotelDashboard;
+import coco.coconutreserve.Transportion.TransportionDashboard;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Hotel;
 import coco.coconutreserve.assets.core.Init;
@@ -58,6 +59,10 @@ public class PaymentSuccess extends AppCompatActivity {
                 {
 
                     intent = new Intent(PaymentSuccess.this, HotelDashboard.class);
+                }
+                else if (appType.equals(Constants.TRANSPORTION))
+                {
+                    intent = new Intent(PaymentSuccess.this, TransportionDashboard.class);
                 }
 
                 startActivity(intent);

@@ -24,11 +24,23 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Transportion.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Cinema.CinemaDashboard"
             android:label="@string/title_activity_dashboard" />
         <activity
             android:name=".Hotel.HotelDashboard"
+            android:label="@string/title_activity_dashboard" />
+
+        <activity
+            android:name=".Transportion.TransportionDashboard"
             android:label="@string/title_activity_dashboard" />
 
         <activity
@@ -38,7 +50,8 @@
             android:name=".Notifications"
             android:label="@string/title_activity_notifications" />
         <activity android:name=".Cinema.SaloonViewAsList" />
-        <activity android:name=".Hotel.LocationViewAsList" />
+        <activity android:name=".Hotel.HotelViewAsList" />
+        <activity android:name=".Transportion.TransportionViewAsList" />
         <activity android:name=".Payment" />
         <activity android:name=".PaymentSuccess" />
         <activity

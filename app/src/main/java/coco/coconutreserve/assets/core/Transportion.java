@@ -15,16 +15,19 @@ public class Transportion implements Place {
     private String type;
     private TransportionSeat[] transportionSeats;
     private int pictureId;
+    private Locations.Location departureLocation;
+    private Locations.Location arrivalLocation;
 
 
     public Transportion(int id, String name, String description, double score, int numOfSeats, String type,
-                        int pictureId) {
+                        int pictureId, Locations.Location departureLocation, Locations.Location arrivalLocation) {
 
-        if(name == null || description == null || score == 0 || score > 10.0 || numOfSeats == 0)
+        if(name == null || description == null || score == 0 || score > 10.0 || numOfSeats == 0 || departureLocation == null
+                || arrivalLocation == null)
         {
             throw new NullPointerException("Transportion parameters are empty!");
         }
-        else if( !type.equals(Constants.BUS ) || !type.equals(Constants.PLANE ) || !type.equals(Constants.TRAIN ) )
+        else if( !(type.equals(Constants.BUS ) || type.equals(Constants.PLANE ) || type.equals(Constants.TRAIN )) )
         {
             throw new NullPointerException("Type must be defined constant");
         }
@@ -36,6 +39,8 @@ public class Transportion implements Place {
         this.numOfSeats = numOfSeats;
         this.type = type;
         this.pictureId = pictureId;
+        this.arrivalLocation = arrivalLocation;
+        this.departureLocation = departureLocation;
 
 
         transportionSeats = new TransportionSeat[numOfSeats];
@@ -95,5 +100,13 @@ public class Transportion implements Place {
     @Override
     public int getId() {
         return id;
+    }
+
+    public Locations.Location getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public Locations.Location getArrivalLocation() {
+        return arrivalLocation;
     }
 }

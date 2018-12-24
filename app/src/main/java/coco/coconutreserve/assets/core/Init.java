@@ -45,7 +45,41 @@ public class Init {
         }
         else if(type.equals(Constants.TRANSPORTION))
         {
-            //Fill this later
+
+            data = new Transportion[Constants.NUM_OF_TRANSPORTIONS];
+            for (int i = 0; i < Constants.NUM_OF_TRANSPORTIONS; i++)
+            {
+                ArrayList<Locations.Location> locations = new ArrayList<>();
+                for (int j = 0; j < Locations.locations.length; j++)
+                {
+                    locations.add(Locations.locations[j]);
+                }
+
+                int random1 = Utils.randomWithRange(0,locations.size()-1);
+                int random2 = Utils.randomWithRange(0,locations.size()-2);
+                int type1 = Utils.randomWithRange(0,2);
+                String trans_type;
+                int pic;
+                if (type1 == 0)
+                {
+                    trans_type = Constants.BUS;
+                    pic = R.drawable.bus;
+                }
+                else if( type1 == 1)
+                {
+                    trans_type = Constants.PLANE;
+                    pic = R.drawable.plane;
+                }
+                else
+                {
+                    trans_type = Constants.TRAIN;
+                    pic = R.drawable.train;
+                }
+                Transportion transportion = new Transportion(i,"Cool Transportion Name #"+i,
+                        "Cool Transportion Description#"+i,Utils.randomWithRange(2.0,9),
+                        Utils.randomWithRange(5,10)*4,trans_type,pic,locations.remove(random1),locations.remove(random2));
+                data[i] = transportion;
+            }
         }
 
 

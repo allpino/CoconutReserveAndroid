@@ -1,4 +1,4 @@
-package coco.coconutreserve.Hotel;
+package coco.coconutreserve;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import coco.coconutreserve.R;
 import coco.coconutreserve.assets.core.Films;
 import coco.coconutreserve.assets.core.Locations;
 
-public class PlaceAdaptor extends ArrayAdapter<Locations.Location>
+public class LocationAdaptor extends ArrayAdapter<Locations.Location>
 {
     private static class ViewHolder {
         TextView locationName;
@@ -25,7 +25,7 @@ public class PlaceAdaptor extends ArrayAdapter<Locations.Location>
     private ViewHolder holder;
     private final Locations.Location[] locations;
 
-    public PlaceAdaptor(Context context, Locations.Location[] locations)
+    public LocationAdaptor(Context context, Locations.Location[] locations)
     {
         super(context,0,locations);
         this.locations = locations;
