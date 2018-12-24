@@ -1,5 +1,7 @@
 package coco.coconutreserve.assets.core;
 
+import android.location.Location;
+
 import java.util.ArrayList;
 
 import coco.coconutreserve.R;
@@ -23,7 +25,7 @@ public class Init {
                 Hotel hotel = new Hotel(i,"Cool Hotel Name #"+i,
                                         "Cool Hotel Description#"+i,
                                         Utils.randomWithRange(10,30),
-                                        Utils.randomWithRange(4.0,9.0), R.drawable.hotel);
+                                        Utils.randomWithRange(4.0,9.0), R.drawable.hotel,Locations.locations[Utils.randomWithRange(0,4)]);
                 data[i] = hotel;
 
             }

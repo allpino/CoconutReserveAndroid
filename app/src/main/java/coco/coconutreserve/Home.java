@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import coco.coconutreserve.Cinema.CinemaDashboard;
+import coco.coconutreserve.Hotel.HotelDashboard;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.Reservation;
@@ -69,11 +69,20 @@ public class Home extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case (R.id.navigation_home):
                         Intent intent = new Intent(Home.this, Home.class);
-                        intent.putExtra("appType",Constants.CINEMA);
+                        intent.putExtra("appType",appType);
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):
-                        Intent intent1 = new Intent(Home.this, Dashboard.class);
+                        Intent intent1 = null;
+                        if (appType.equals(Constants.CINEMA))
+                        {
+                            intent1 = new Intent(Home.this, CinemaDashboard.class);
+                        }
+                        else if (appType.equals(Constants.HOTEL))
+                        {
+
+                            intent1 = new Intent(Home.this, HotelDashboard.class);
+                        }
                         startActivity(intent1);
                         break;
                     case (R.id.navigation_notifications):

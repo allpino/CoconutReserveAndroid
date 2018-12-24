@@ -13,10 +13,11 @@ public class Hotel implements Place{
     private int numOfRooms;
     private double score;
     private int pictureId;
+    private Locations.Location location;
 
-    public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId)
+    public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId, Locations.Location location)
     {
-        if (name == null || description == null || numOfRooms == 0 || score == 0)
+        if (name == null || description == null || numOfRooms == 0 || score == 0 || location == null)
         {
             throw new NullPointerException("Parameters of hotel is empty");
         }
@@ -31,6 +32,7 @@ public class Hotel implements Place{
         this.numOfRooms = numOfRooms;
         this.score = score;
         this.pictureId = pictureId;
+        this.location = location;
         capacity = 0;
 
         hotelRooms = new HotelRoom[numOfRooms];
@@ -100,5 +102,9 @@ public class Hotel implements Place{
     @Override
     public int getId() {
         return hotelId;
+    }
+
+    public Locations.Location getLocation() {
+        return location;
     }
 }

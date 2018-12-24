@@ -36,6 +36,7 @@ public class SeatSelection extends AppCompatActivity {
     SeatAndRoom selectedSeat = null;
     Place selectedPlace = null;
     int filmId;
+    int locationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

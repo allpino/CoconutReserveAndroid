@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import coco.coconutreserve.Cinema.CinemaDashboard;
 import coco.coconutreserve.assets.core.Constants;
 
 public class Notifications extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class Notifications extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):
-                        Intent intent1 = new Intent(Notifications.this, Dashboard.class);
+                        Intent intent1 = new Intent(Notifications.this, CinemaDashboard.class);
                         startActivity(intent1);
                         break;
                     case (R.id.navigation_notifications):

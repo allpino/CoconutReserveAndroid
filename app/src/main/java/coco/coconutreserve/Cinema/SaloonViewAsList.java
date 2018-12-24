@@ -1,4 +1,4 @@
-package coco.coconutreserve;
+package coco.coconutreserve.Cinema;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -10,6 +10,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import coco.coconutreserve.PlaceAdaptor;
+import coco.coconutreserve.R;
+import coco.coconutreserve.SeatSelection;
 import coco.coconutreserve.assets.core.Cinema;
 import coco.coconutreserve.assets.core.CinemaSaloon;
 import coco.coconutreserve.assets.core.Constants;
@@ -60,7 +63,7 @@ public class SaloonViewAsList extends AppCompatActivity {
 
                 intent.putExtra("saloonId", saloon.getSaloonId());
                 intent.putExtra("placeId", selectedCinema.getId());
-                intent.putExtra("appType", placeAdaptor.getAppType());
+                intent.putExtra("appType", Constants.CINEMA);
                 intent.putExtra("filmId", filmId);
 
                 startActivity(intent);

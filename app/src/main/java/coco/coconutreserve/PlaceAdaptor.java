@@ -25,7 +25,6 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
     private final Context context;
     private ViewHolder holder;
     private final Place[] places;
-    private String appType;
 
 
     public PlaceAdaptor(Context context, Place[] places)
@@ -52,11 +51,9 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            if (parent.getContext() instanceof SaloonViewAsList) // I will fix this after activities are complete
-            {
-                convertView = layoutInflater.inflate(R.layout.place_view_listelement,null); // I know this is wrong atm
-                appType = Constants.CINEMA;
-            }
+
+            convertView = layoutInflater.inflate(R.layout.place_view_listelement,null); // I know this is wrong atm
+
 
             holder = new ViewHolder();
             holder.placeName = (TextView) convertView.findViewById(R.id.saloonName);
@@ -85,7 +82,4 @@ public class PlaceAdaptor extends ArrayAdapter<Place>
 
     }
 
-    public String getAppType() {
-        return appType;
-    }
 }

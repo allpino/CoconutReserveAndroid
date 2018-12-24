@@ -1,4 +1,4 @@
-package coco.coconutreserve;
+package coco.coconutreserve.Cinema;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import coco.coconutreserve.R;
 import coco.coconutreserve.assets.core.Films;
 
 public class FilmAdaptor extends ArrayAdapter<Films.Film>

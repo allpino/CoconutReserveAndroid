@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import coco.coconutreserve.Cinema.CinemaDashboard;
+import coco.coconutreserve.Hotel.HotelDashboard;
 import coco.coconutreserve.assets.core.Constants;
+import coco.coconutreserve.assets.core.Hotel;
 import coco.coconutreserve.assets.core.Init;
 import coco.coconutreserve.assets.core.User;
 import coco.coconutreserve.assets.core.Utils;
@@ -46,7 +48,18 @@ public class PaymentSuccess extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PaymentSuccess.this, Dashboard.class);
+
+                Intent intent = null;
+                if (appType.equals(Constants.CINEMA))
+                {
+                    intent = new Intent(PaymentSuccess.this, CinemaDashboard.class);
+                }
+                else if (appType.equals(Constants.HOTEL))
+                {
+
+                    intent = new Intent(PaymentSuccess.this, HotelDashboard.class);
+                }
+
                 startActivity(intent);
             }
         });

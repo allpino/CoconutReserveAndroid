@@ -1,23 +1,23 @@
-package coco.coconutreserve;
+package coco.coconutreserve.Cinema;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import coco.coconutreserve.assets.core.Cinema;
+import coco.coconutreserve.Home;
+import coco.coconutreserve.Notifications;
+import coco.coconutreserve.R;
 import coco.coconutreserve.assets.core.Constants;
 import coco.coconutreserve.assets.core.Films;
-import coco.coconutreserve.assets.core.Init;
 
-public class Dashboard extends AppCompatActivity {
+public class CinemaDashboard extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -33,9 +33,7 @@ public class Dashboard extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-//                Toast.makeText(getApplicationContext(),fruitNames[i],Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),SaloonViewAsList.class); /// burda önce filmler mi olucak yoksa sinemalar mı gözükecek ?
+                Intent intent = new Intent(getApplicationContext(),SaloonViewAsList.class);
                 Films.Film selectedFilm = (Films.Film) listView.getItemAtPosition(i);
                 intent.putExtra("filmId",selectedFilm.getId());
                 startActivity(intent);
@@ -48,16 +46,16 @@ public class Dashboard extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case (R.id.navigation_home):
-                        Intent intent = new Intent(Dashboard.this, Home.class);
+                        Intent intent = new Intent(CinemaDashboard.this, Home.class);
                         intent.putExtra("appType",Constants.CINEMA);
                         startActivity(intent);
                         break;
                     case (R.id.navigation_dashboard):
-                        Intent intent2 = new Intent(Dashboard.this, Dashboard.class);
+                        Intent intent2 = new Intent(CinemaDashboard.this, CinemaDashboard.class);
                         startActivity(intent2);
                         break;
                     case (R.id.navigation_notifications):
-                        Intent intent3 = new Intent(Dashboard.this, Notifications.class);
+                        Intent intent3 = new Intent(CinemaDashboard.this, Notifications.class);
                         startActivity(intent3);
                         break;
                 }
