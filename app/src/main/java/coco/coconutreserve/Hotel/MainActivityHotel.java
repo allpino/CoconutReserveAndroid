@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import coco.coconutreserve.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityHotel extends AppCompatActivity {
     TextView welcomeMessage;
     EditText email;
     EditText password;
