@@ -26,6 +26,8 @@ public class Init {
                                         "Cool Hotel Description#"+i,
                                         Utils.randomWithRange(10,30),
                                         Utils.randomWithRange(4.0,9.0), R.drawable.hotel,Locations.locations[Utils.randomWithRange(0,4)]);
+                hotel.setExcursions("Private Tour: "+ hotel.getLocation().getLocationName() +"Sightseeing\n"+
+                "Big Bus"+hotel.getLocation().getLocationName() +" Hop-On Hop-Off Tour");
                 data[i] = hotel;
 
             }
