@@ -41,7 +41,7 @@ public class Payment extends AppCompatActivity {
         Reservation selectedReservation = reservations.get(reservationId);
 
         seatInfo = findViewById(R.id.seatInfo);
-        seatInfo.setText(selectedReservation.toString());
+        seatInfo.setText(selectedReservation.getReservationInfo());
         enterNameTV = findViewById(R.id.enterNameTV);
         paymentChooseTV = findViewById(R.id.paymentTV);
         nameEnter=  findViewById(R.id.enterNameET);

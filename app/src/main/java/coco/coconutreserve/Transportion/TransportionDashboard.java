@@ -74,6 +74,16 @@ public class TransportionDashboard extends AppCompatActivity {
 
                     }
                 }
+                else if (numberOfSelections >= 2)
+                {
+                    numberOfSelections = 0;
+                    departureLocationId = -1;
+                    arrivalLocationId = -1;
+                    for (int j = 0; j <listView.getChildCount() ; j++) {
+                        listView.getChildAt(j).setBackgroundColor(Color.WHITE);
+
+                    }
+                }
 
             }
         });

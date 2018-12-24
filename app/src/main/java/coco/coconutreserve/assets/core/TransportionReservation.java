@@ -31,8 +31,15 @@ public class TransportionReservation implements Reservation {
 
     @Override
     public String getReservationInfo() {
-        return "Transportion Reservation for person: " + reserverName +"\n for transportion: " + transportion + "\n for seat: "
-                + transportionSeat + "\n for time: " + reservationDate + " \n for price: " + getPrice();
+        String ret = "From: " + transportion.getDepartureLocation().getLocationName()+
+                        " To: " + transportion.getArrivalLocation().getLocationName()+ "\n"+
+                        "Type: " + transportion.getType() + "\n" +
+                        "Price: " + transportionSeat.getPrice() + "\n";
+        if (reserverName != null)
+        {
+            ret += "Reserver Name: " + reserverName;
+        }
+        return ret;
     }
 
     @Override
