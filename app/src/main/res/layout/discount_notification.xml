@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/campainText"
+        android:id="@+id/discountInformation"
         android:layout_width="164dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"

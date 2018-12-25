@@ -70,4 +70,8 @@ public class HotelRoom implements SeatAndRoom{
     public int getId() {
         return roomId;
     }
+
+    public void setPrice(int discountAmount) {
+        price = price - discountAmount;
+    }
 }

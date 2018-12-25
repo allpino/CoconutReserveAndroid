@@ -1,4 +1,3 @@
-/*
 package coco.coconutreserve;
 
 import android.app.Activity;
@@ -7,61 +6,52 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import coco.coconutreserve.assets.core.Films;
+import coco.coconutreserve.assets.core.Discount;
+import coco.coconutreserve.assets.core.Reservation;
 
-
-///// TO BE IMPLEMENTED
-
-public class DiscountAdaptor extends ArrayAdapter<Films.Film>
+public class DiscountAdaptor extends ArrayAdapter<Discount>
 {
     private static class ViewHolder {
-        TextView filmName;
-        TextView filmTime;
-        TextView filmDuration;
-        ImageView filmPic;
-
+        TextView discountInformation;
+        String nameOfDiscountOwner;
     }
 
     private final LayoutInflater layoutInflater;
     private final Context context;
     private ViewHolder holder;
-    private final Films.Film[] films;
+    private final ArrayList<Discount> discounts;
 
-    public DiscountAdaptor(Context context, Films.Film[] films)
+    public DiscountAdaptor(Context context, ArrayList<Discount> discounts)
     {
-        super(context,0,films);
-        this.films = films;
+        super();
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
+        this.discounts = discounts;
     }
 
     @Override
     public int getCount(){
-        return films.length;
+        return discounts.size();
     }
 
     @Override
-    public Films.Film getItem(int position)
+    public Discount getItem(int position)
     {
-        return films[position];
+        return discounts.get(position);
     }
 
     @Override
     public View getView(int position,  View convertView, ViewGroup parent) {
         if (convertView == null)
         {
-            convertView = layoutInflater.inflate(R.layout.activity_list_of_films,null);
+            convertView = layoutInflater.inflate(R.layout.home_history,null);
             holder = new ViewHolder();
-            holder.filmName = (TextView) convertView.findViewById(R.id.film_name);
-            holder.filmDuration =  (TextView) convertView.findViewById(R.id.film_duration);
-            holder.filmTime = (TextView) convertView.findViewById(R.id.film_start_time);
-            holder.filmPic = (ImageView) convertView.findViewById(R.id.film_image);
+            holder.discountInformation = (TextView) convertView.findViewById(R.id.filmHistory);
             convertView.setTag( holder);
         }
         else
@@ -69,16 +59,12 @@ public class DiscountAdaptor extends ArrayAdapter<Films.Film>
             holder = (ViewHolder)convertView.getTag();
         }
 
-        Films.Film film = films[position];
+        Discount discount = discounts.get(position);
 
-        if(film != null)
+        if( discount.doesHave() != false)
         {
-            holder.filmPic.setImageResource(film.getPicture());
-            holder.filmName.setText(film.getFilmName());
-            String filmTime = "Start Time: " + film.getFilmTime().getHour()+ ":" + film.getFilmTime().getMinute();
-            String duration = "Film Duration: " + film.getDuration().getHour()+ " Hours " + film.getDuration().getMinute() + " Minutes";
-            holder.filmDuration.setText(duration);
-            holder.filmTime.setText(filmTime);
+            //holder.filmPic = reservation.getId()
+            holder.discountInformation.setText( "Discount amount of hotel is : " + discount.getDiscountAmount());
 
         }
 
@@ -87,4 +73,4 @@ public class DiscountAdaptor extends ArrayAdapter<Films.Film>
 
 
     }
-}*/
+}
