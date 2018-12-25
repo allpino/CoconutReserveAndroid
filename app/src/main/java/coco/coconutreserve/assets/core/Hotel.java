@@ -15,6 +15,7 @@ public class Hotel implements Place{
     private int pictureId;
     private Locations.Location location;
     private String excursions;
+    private int discount;
 
     public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId, Locations.Location location)
     {
@@ -114,5 +115,14 @@ public class Hotel implements Place{
 
     public void setExcursions(String excursions) {
         this.excursions = excursions;
+    }
+
+    @Override
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 }

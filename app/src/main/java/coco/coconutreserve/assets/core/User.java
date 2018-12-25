@@ -169,5 +169,19 @@ public class User
         return watchList;
     }
 
+    public ArrayList<Place> getDiscountPlaces()
+    {
+        ArrayList<Place> ret = new ArrayList<>();
+
+        for (int i = 0; i < wishList.size(); i++)
+        {
+            if (wishList.get(i).getDiscount() != 0 && wishList.get(i).getDiscount() > 0)
+            {
+                ret.add(wishList.get(i));
+            }
+        }
+        return ret;
+    }
+
 
 }

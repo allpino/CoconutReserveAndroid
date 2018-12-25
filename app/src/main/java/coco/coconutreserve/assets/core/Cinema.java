@@ -15,6 +15,7 @@ public class Cinema implements Place{
     private int capacity;
     private CinemaSaloon[] cinemaSaloons;
     private int pictureId;
+    private int discount;
 
     public Cinema(int cinemaId, String name, String description, int numOfSaloons, double score, int pictureId)
     {
@@ -118,5 +119,14 @@ public class Cinema implements Place{
     @Override
     public int getId() {
         return cinemaId;
+    }
+
+    @Override
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 }
