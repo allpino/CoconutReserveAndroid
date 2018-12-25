@@ -28,7 +28,7 @@ public class DiscountAdaptor extends ArrayAdapter<Discount>
 
     public DiscountAdaptor(Context context, ArrayList<Discount> discounts)
     {
-        super();
+        super(context,0,discounts);
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.discounts = discounts;
