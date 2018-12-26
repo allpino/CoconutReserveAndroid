@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +22,9 @@ import coco.coconutreserve.assets.core.Locations;
 public class HotelDashboard extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private ListView listView;
+    private LocationAdaptor locationAdaptor;
+    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,8 @@ public class HotelDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
-        ListView listView = (ListView) findViewById(R.id.activity_list_of_films);
-        LocationAdaptor locationAdaptor = new LocationAdaptor(this, Locations.locations);
+        listView = (ListView) findViewById(R.id.activity_list_of_films);
+        locationAdaptor = new LocationAdaptor(this, Locations.locations);
         listView.setAdapter(locationAdaptor);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,7 +44,9 @@ public class HotelDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_dashboard);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

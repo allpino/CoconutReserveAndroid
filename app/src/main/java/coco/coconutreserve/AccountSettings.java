@@ -30,14 +30,13 @@ public class AccountSettings extends AppCompatActivity {
         setContentView(R.layout.activity_account_settings);
 
         user = Init.getInstance(Constants.CINEMA).getUser(); // ToDo: Fix this after
-
         appType = getIntent().getExtras().getString("appType");
-       aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
-       userNameTV = ( TextView ) findViewById(R.id.userName);
-       userNameET = (EditText) findViewById(R.id.userNameET);
-       premiumSwitch = ( Switch ) findViewById(R.id.premiumSwitch);
-       walletSetings = (Button) findViewById(R.id.walletSettings);
-       saveAndExit = ( Button) findViewById(R.id.saveAndExit);
+        aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
+        userNameTV = ( TextView ) findViewById(R.id.userName);
+        userNameET = (EditText) findViewById(R.id.userNameET);
+        premiumSwitch = ( Switch ) findViewById(R.id.premiumSwitch);
+        walletSetings = (Button) findViewById(R.id.walletSettings);
+        saveAndExit = ( Button) findViewById(R.id.saveAndExit);
         wishList = (Button) findViewById(R.id.wishList);
         wishList.setVisibility(View.INVISIBLE);
 
@@ -45,7 +44,7 @@ public class AccountSettings extends AppCompatActivity {
             wishList.setVisibility(View.VISIBLE);
        if(user.isPremium())
        {
-            //premiumSwitch.setChecked();
+            premiumSwitch.setChecked();
        }
 
        premiumSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -8,9 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Blog extends AppCompatActivity {
-    Button dashboard;
-    TextView blogTextView;
-    ImageView blogImage;
+    private Button dashboard;
+    private TextView blogTextView;
+    private ImageView blogImage;
+    private String appType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,9 @@ public class Blog extends AppCompatActivity {
         dashboard = findViewById(R.id.dashboardButton);
         blogImage = findViewById(R.id.blogImage);
         blogTextView = findViewById(R.id.blogPost);
-        // app type al burda onu passla .
+        appType = getIntent().getExtras().getString("appType");
+
+
         dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
