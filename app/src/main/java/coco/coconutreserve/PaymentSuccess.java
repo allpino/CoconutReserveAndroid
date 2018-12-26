@@ -62,6 +62,7 @@ public class PaymentSuccess extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = null;
+
                 if (appType.equals(Constants.CINEMA))
                 {
                     intent = new Intent(PaymentSuccess.this, CinemaDashboard.class);
@@ -75,7 +76,7 @@ public class PaymentSuccess extends AppCompatActivity {
                 {
                     intent = new Intent(PaymentSuccess.this, TransportionDashboard.class);
                 }
-
+                intent.putExtra("appType",appType);
                 startActivity(intent);
             }
         });
@@ -85,6 +86,7 @@ public class PaymentSuccess extends AppCompatActivity {
                 if (appType.equals(Constants.HOTEL)) {
 
                     Intent intent = new Intent(PaymentSuccess.this, Excursions.class);
+                    intent.putExtra("appType",appType);
                     startActivity(intent);
                 }
             }

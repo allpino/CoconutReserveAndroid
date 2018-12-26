@@ -16,7 +16,6 @@ public class Hotel implements Place{
     private Locations.Location location;
     private String excursions;
     private Discount discount;
-
     public Hotel(int id, String name, String description, int numOfRooms, double score, int pictureId, Locations.Location location)
     {
         if (name == null || description == null || numOfRooms == 0 || score == 0 || location == null)
@@ -124,4 +123,6 @@ public class Hotel implements Place{
     public void setExcursions(String excursions) {
         this.excursions = excursions;
     }
+
+
 }

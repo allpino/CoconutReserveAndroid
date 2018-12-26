@@ -10,9 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import coco.coconutreserve.Cinema.CinemaDashboard;
 import coco.coconutreserve.Hotel.HotelDashboard;
 import coco.coconutreserve.Transportion.TransportionDashboard;
@@ -114,6 +112,7 @@ public class Home extends AppCompatActivity {
                         {
                             intent1 = new Intent(Home.this,TransportionDashboard.class);
                         }
+                        intent1.putExtra("appType",appType);
                         startActivity(intent1);
                         break;
                     case (R.id.navigation_notifications):

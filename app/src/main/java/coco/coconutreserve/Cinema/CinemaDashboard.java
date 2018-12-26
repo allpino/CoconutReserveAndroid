@@ -52,10 +52,12 @@ public class CinemaDashboard extends AppCompatActivity {
                         break;
                     case (R.id.navigation_dashboard):
                         Intent intent2 = new Intent(CinemaDashboard.this, CinemaDashboard.class);
+                        intent2.putExtra("appType",Constants.CINEMA);
                         startActivity(intent2);
                         break;
                     case (R.id.navigation_notifications):
                         Intent intent3 = new Intent(CinemaDashboard.this, Notifications.class);
+                        intent3.putExtra("appType",Constants.CINEMA);
                         startActivity(intent3);
                         break;
                 }

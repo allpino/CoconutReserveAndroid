@@ -35,21 +35,10 @@ public class WalletInfo extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(appType.equals(Constants.HOTEL))
-                {
-                    Intent intent = new Intent(WalletInfo.this, HotelDashboard.class);
+                    Intent intent = new Intent(WalletInfo.this, PaymentSuccess.class);
+                intent.putExtra("appType",appType);
                     startActivity(intent);
-                }
-                else if(appType.equals(Constants.CINEMA))
-                {
-                    Intent intent1 = new Intent(WalletInfo.this, CinemaDashboard.class);
-                    startActivity(intent1);
-                }
-                else
-                {
-                    Intent intent2 = new Intent(WalletInfo.this, TransportionDashboard.class);
-                    startActivity(intent2);
-                }
+
         }
 
     });

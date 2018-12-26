@@ -124,22 +124,22 @@ public class Payment extends AppCompatActivity {
                 if( checkedOne == R.id.useWallet)
                 {
                     paymentType = Constants.WALLET;
-                    Toast.makeText(Payment.this, "Wallet is selected ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, "Wallet Option is selected ", Toast.LENGTH_SHORT).show();
                 }
                 else if(checkedOne == R.id.creditCard)
                 {
                     paymentType = Constants.CREDITCARD;
-                    Toast.makeText(Payment.this, "Credit Card is selected ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, "Credit Card Option is selected ", Toast.LENGTH_SHORT).show();
                 }
                 else if( checkedOne == R.id.payPalSelect)
                 {
                     paymentType = Constants.PAYPAL;
-                    Toast.makeText(Payment.this, "PayPal  is selected ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, "PayPal Option  is selected ", Toast.LENGTH_SHORT).show();
                 }
                 else if ( checkedOne == R.id.pointsSelect)
                 {
                     paymentType = Constants.POINTS;
-                    Toast.makeText(Payment.this, "Points is selected ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, "Point Option is selected ", Toast.LENGTH_SHORT).show();
                 }
 
             }

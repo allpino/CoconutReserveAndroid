@@ -53,10 +53,12 @@ public class HotelDashboard extends AppCompatActivity {
                         break;
                     case (R.id.navigation_dashboard):
                         Intent intent2 = new Intent(HotelDashboard.this, HotelDashboard.class);
+                        intent2.putExtra("appType",Constants.HOTEL);
                         startActivity(intent2);
                         break;
                     case (R.id.navigation_notifications):
                         Intent intent3 = new Intent(HotelDashboard.this, Notifications.class);
+                        intent3.putExtra("appType",Constants.HOTEL);
                         startActivity(intent3);
                         break;
                 }

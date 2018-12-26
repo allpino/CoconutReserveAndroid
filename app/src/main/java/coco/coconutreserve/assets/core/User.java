@@ -169,7 +169,7 @@ public class User
         return watchList;
     }
 
-    public ArrayList<Place> getDiscountPlaces()
+   /* public ArrayList<Place> getDiscountPlaces()
     {
         ArrayList<Place> ret = new ArrayList<>();
 
@@ -181,7 +181,7 @@ public class User
             }
         }
         return ret;
-    }
+    }*/
 
 
 }

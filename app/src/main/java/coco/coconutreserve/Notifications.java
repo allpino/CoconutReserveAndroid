@@ -11,12 +11,13 @@ import coco.coconutreserve.Cinema.CinemaDashboard;
 import coco.coconutreserve.assets.core.Constants;
 
 public class Notifications extends AppCompatActivity {
-
+    String appType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+        appType = getIntent().getExtras().getString("appType");
 
 //// ON THIS PAGE, DISCOUNTS WILL BE SHOWN.
 
@@ -26,6 +27,7 @@ public class Notifications extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    if(appType.equals(Constants.CINEMA)){
                     case (R.id.navigation_home):
                         Intent intent = new Intent(Notifications.this, Home.class);
                         intent.putExtra("appType",Constants.CINEMA);
@@ -39,7 +41,7 @@ public class Notifications extends AppCompatActivity {
                         Intent intent2 = new Intent(Notifications.this, Notifications.class);
                         startActivity(intent2);
                         break;
-                }
+                }}
                 return false;
             }
         });
