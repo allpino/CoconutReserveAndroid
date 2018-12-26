@@ -96,36 +96,51 @@
 
     <Button
         android:id="@+id/walletSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
         android:layout_marginTop="208dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="256dp"
         android:layout_marginBottom="8dp"
         android:text="Wallet Settings"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/accountSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="112dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Account Settings"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toEndOf="@+id/walletSettings"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.805" />
+        app:layout_constraintVertical_bias="0.803" />
+
+    <Button
+        android:id="@+id/wishList"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="95dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:text="WishList"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/accountSettings"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/walletSettings"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.796" />
 
 </android.support.constraint.ConstraintLayout>

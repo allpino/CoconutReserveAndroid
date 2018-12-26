@@ -27,13 +27,13 @@ public class Payment extends AppCompatActivity {
     RadioButton payPal, wallet, creditCard, points;
     Button payButton;
     String paymentType = null;
-
+    String appType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        String appType = getIntent().getExtras().getString("appType");
+        appType = getIntent().getExtras().getString("appType");
         int reservationId = getIntent().getExtras().getInt("reservationId");
 
         ArrayList<Reservation> reservations = Init.getInstance(appType).getReservations();
