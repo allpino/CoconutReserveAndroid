@@ -28,6 +28,13 @@ public class Init {
                                         Utils.randomWithRange(4.0,9.0), R.drawable.hotel,Locations.locations[Utils.randomWithRange(0,4)]);
                 hotel.setExcursions("Private Tour: "+ hotel.getLocation().getLocationName() +"Sightseeing\n"+
                 "Big Bus"+hotel.getLocation().getLocationName() +" Hop-On Hop-Off Tour");
+
+                int isDiscount = Utils.randomWithRange(0,1);
+                if (isDiscount == 1)
+                {
+                    hotel.setDiscount(Utils.randomWithRange(5,10));
+                }
+
                 data[i] = hotel;
 
             }
@@ -42,6 +49,14 @@ public class Init {
                         "Cool Cinema Description#"+i,
                         Utils.randomWithRange(1,3),
                         Utils.randomWithRange(2.0,9),R.drawable.cinema);
+
+                int isDiscount = Utils.randomWithRange(0,1);
+                if (isDiscount == 1)
+                {
+                    cinema.setDiscount(Utils.randomWithRange(5,10));
+                }
+
+
                 data[i] = cinema;
             }
         }
@@ -80,6 +95,14 @@ public class Init {
                 Transportion transportion = new Transportion(i,"Cool Transportion Name #"+i,
                         "Cool Transportion Description#"+i,Utils.randomWithRange(2.0,9),
                         Utils.randomWithRange(5,10)*4,trans_type,pic,locations.remove(random1),locations.remove(random2));
+
+
+                int isDiscount = Utils.randomWithRange(0,1);
+                if (isDiscount == 1)
+                {
+                    transportion.setDiscount(Utils.randomWithRange(5,10));
+                }
+
                 data[i] = transportion;
             }
         }

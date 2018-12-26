@@ -11,15 +11,29 @@ public class TransportionSeat implements SeatAndRoom{
     private boolean isTaken;
     private int columnCount;
     private int pictureId;
+    private String type;
 
-    public TransportionSeat(int id, String name, int price, int columnCount, int pictureId) {
+    public TransportionSeat(int id, String name, int price, int columnCount,  String type) {
         this.name = name;
         this.price = price;
         isTaken = false;
         capacity = 1;
         this.id = id;
         this.columnCount = columnCount;
-        this.pictureId = pictureId;
+        this.type = type;
+
+        if (type.equals(Constants.BUS))
+        {
+            this.pictureId = R.drawable.bus_seat_empty;
+        }
+        else if (type.equals(Constants.PLANE))
+        {
+            this.pictureId = R.drawable.air_seat_empty;
+        }
+        else if (type.equals(Constants.TRAIN))
+        {
+            this.pictureId = R.drawable.train_seat_empty;
+        }
     }
 
     @Override
@@ -50,7 +64,18 @@ public class TransportionSeat implements SeatAndRoom{
     @Override
     public void setAsTaken() {
         isTaken = true;
-        pictureId = R.drawable.seat_full;
+        if (type.equals(Constants.BUS))
+        {
+            this.pictureId = R.drawable.bus_seat_full;
+        }
+        else if (type.equals(Constants.PLANE))
+        {
+            this.pictureId = R.drawable.air_seat_full;
+        }
+        else if (type.equals(Constants.TRAIN))
+        {
+            this.pictureId = R.drawable.train_seat_full;
+        }
     }
 
 

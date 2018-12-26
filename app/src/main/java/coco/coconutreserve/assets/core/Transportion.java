@@ -17,6 +17,7 @@ public class Transportion implements Place {
     private int pictureId;
     private Locations.Location departureLocation;
     private Locations.Location arrivalLocation;
+    private int discount;
 
 
     public Transportion(int id, String name, String description, double score, int numOfSeats, String type,
@@ -48,7 +49,7 @@ public class Transportion implements Place {
         for (int j = 0; j < numOfSeats ; j++)
         {
             TransportionSeat seat = new TransportionSeat(j,(char)(65 +j/4) + "-" + j%4,
-                    Utils.randomWithRange(10,15),4, R.drawable.seat_empty);
+                    Utils.randomWithRange(10,15),4, type);
             transportionSeats[j] = seat;
             capacity += seat.getCapacity();
         }
@@ -111,5 +112,14 @@ public class Transportion implements Place {
 
     public Locations.Location getArrivalLocation() {
         return arrivalLocation;
+    }
+
+    @Override
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 }
