@@ -21,7 +21,7 @@ import coco.coconutreserve.assets.core.Transportion;
 import coco.coconutreserve.assets.core.User;
 
 public class Home extends AppCompatActivity {
-    Button accountSettings, myWallet;
+    Button accountSettings, myWallet, logout, wishlist;
     TextView userName, wallet , numOfReservations;
     User user;
     ArrayList<Reservation> reservations;
@@ -37,7 +37,25 @@ public class Home extends AppCompatActivity {
         init = Init.getInstance(appType);
         reservations = Init.getInstance(appType).getReservations();
         user = Init.getInstance(appType).getUser();
+        logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        wishlist = findViewById(R.id.wishList);
+        wishlist.setVisibility(View.INVISIBLE);
+        wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, Wishlist.class);
+                intent.putExtra("appType",appType);
+                startActivity(intent);
+            }
+        });
         userName = findViewById(R.id.homeUserName);
         userName.setText("Username:" + user.getName());
         wallet = findViewById(R.id.homeWallet);
@@ -61,7 +79,7 @@ public class Home extends AppCompatActivity {
         myWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, WalletPayment.class);
+                Intent intent = new Intent(Home.this, WalletInfo.class);
                 intent.putExtra("appType",appType);
                 startActivity(intent);
             }
@@ -72,6 +90,7 @@ public class Home extends AppCompatActivity {
             userType.setText("User Type: " + user.getUserType());
             TextView points = findViewById(R.id.homePoints);
             points.setText("Points: " + user.getPoints());
+            wishlist.setVisibility(View.VISIBLE);
         }
         else
         {
@@ -117,6 +136,7 @@ public class Home extends AppCompatActivity {
                         break;
                     case (R.id.navigation_notifications):
                         Intent intent2 = new Intent(Home.this, Notifications.class);
+                        intent2.putExtra("appType",appType);
                         startActivity(intent2);
                         break;
                 }

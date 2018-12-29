@@ -35,7 +35,7 @@ public class Hotel implements Place{
         this.pictureId = pictureId;
         this.location = location;
         capacity = 0;
-        discount = new Discount(); // this should be applied to all rooms but also discount should be seen as a discount. so we need to keep track of it.
+
         hotelRooms = new HotelRoom[numOfRooms];
 
         for (int j = 0; j <  numOfRooms; j++)
@@ -44,21 +44,12 @@ public class Hotel implements Place{
             HotelRoom room = new HotelRoom(j,(char)(65 +j/2) + "-" + j%2, room_cap,
                     room_cap*10,2, R.drawable.bed_empty); // add pics
             hotelRooms[j] = room;
-            hotelRooms[j].setPrice(discount.getDiscountAmount()); // discount applied. this will be applied to all rooms of each hotel.
             this.capacity += room_cap;
         }
 
 
     }
-
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
-    }
-
+    
     @Override
     public String getName() {
         return name;

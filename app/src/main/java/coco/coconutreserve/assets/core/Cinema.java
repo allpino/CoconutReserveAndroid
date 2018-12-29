@@ -15,7 +15,7 @@ public class Cinema implements Place{
     private int capacity;
     private CinemaSaloon[] cinemaSaloons;
     private int pictureId;
-    private Discount discount;
+
 
     public Cinema(int cinemaId, String name, String description, int numOfSaloons, double score, int pictureId)
     {
@@ -28,7 +28,7 @@ public class Cinema implements Place{
             throw new ArithmeticException("Score can not be higher than 10");
         }
 
-        discount = new Discount();
+
         this.name = name;
         this.cinemaId = cinemaId;
         this.description = description;
@@ -89,10 +89,7 @@ public class Cinema implements Place{
         return null;
     }
 
-    @Override
-    public Discount getDiscount() {
-        return discount;
-    }
+
 
     public int getNumOfSaloons() {
         return numOfSaloons;

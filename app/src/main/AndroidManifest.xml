@@ -50,14 +50,16 @@
         <activity android:name=".Transportion.TransportionViewAsList" />
         <activity android:name=".Payment" />
         <activity android:name=".PaymentSuccess" />
-        <activity
-            android:name=".AccountSettings"
-            android:label="@string/title_activity_account_settings" />
+        <activity android:name=".AccountSettings"/>
         <activity android:name=".SeatSelection" />
         <activity android:name=".WalletInfo" />
         <activity android:name=".WalletPayment" />
         <activity android:name=".Blog" />
-        <activity android:name=".Excursions"></activity>
+        <activity android:name=".Excursions" />
+        <activity android:name=".Wishlist"></activity>
+        <activity android:name=".WelcomeActivity"><intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
     </application>
 
 </manifest>

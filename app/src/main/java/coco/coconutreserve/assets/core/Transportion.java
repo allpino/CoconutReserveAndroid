@@ -114,7 +114,6 @@ public class Transportion implements Place {
         return arrivalLocation;
     }
 
-    @Override
     public int getDiscount() {
         return discount;
     }

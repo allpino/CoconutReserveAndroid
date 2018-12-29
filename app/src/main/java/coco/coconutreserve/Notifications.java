@@ -7,7 +7,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -20,20 +22,17 @@ import coco.coconutreserve.assets.core.Discount;
 import coco.coconutreserve.assets.core.Transportion;
 
 public class Notifications extends AppCompatActivity {
-    private String appType;
-    private ListView discountView;
-    private DiscountAdaptor discountAdaptor;
-    private ArrayList<Discount> discounts;
+    String appType;
+    ImageView campainImage;
+    TextView campainInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
-        discounts = new ArrayList<Discount>();
         appType = getIntent().getExtras().getString("appType");
-        discountView = findViewById(R.id.list_of_discounts);
-        discountAdaptor= new DiscountAdaptor(this, discounts); // ToDo: buraya bakarlar
-        discountView.setAdapter(discountAdaptor);
+        campainImage = findViewById(R.id.campaignImage2);
+        campainInfo =findViewById(R.id.campainInfo);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_notifications);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

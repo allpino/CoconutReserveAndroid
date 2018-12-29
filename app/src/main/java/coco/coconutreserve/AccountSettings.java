@@ -29,7 +29,7 @@ public class AccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
 
-        user = Init.getInstance(Constants.CINEMA).getUser(); // ToDo: Fix this after
+        user = Init.getInstance(Constants.CINEMA).getUser();
         appType = getIntent().getExtras().getString("appType");
         aacountSettings =  (TextView) findViewById(R.id.accountSettingTV);
         userNameTV = ( TextView ) findViewById(R.id.userName);
@@ -44,7 +44,7 @@ public class AccountSettings extends AppCompatActivity {
             wishList.setVisibility(View.VISIBLE);
        if(user.isPremium())
        {
-            premiumSwitch.setChecked();
+            premiumSwitch.setChecked(true);
        }
 
        premiumSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

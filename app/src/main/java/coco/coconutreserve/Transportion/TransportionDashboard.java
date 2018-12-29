@@ -100,10 +100,12 @@ public class TransportionDashboard extends AppCompatActivity {
                         break;
                     case (R.id.navigation_dashboard):
                         Intent intent2 = new Intent(TransportionDashboard.this, TransportionDashboard.class);
+                        intent2.putExtra("appType",Constants.TRANSPORTION);
                         startActivity(intent2);
                         break;
                     case (R.id.navigation_notifications):
                         Intent intent3 = new Intent(TransportionDashboard.this, Notifications.class);
+                        intent3.putExtra("appType",Constants.TRANSPORTION);
                         startActivity(intent3);
                         break;
                 }

@@ -43,7 +43,7 @@ public class Blog extends AppCompatActivity {
 
         //blog yazıısnı çek al koy
 
-        blogTextView.setText();
+        blogTextView.setText( "Hello there, this place is actually really nice to stay ! " );
 
 
 

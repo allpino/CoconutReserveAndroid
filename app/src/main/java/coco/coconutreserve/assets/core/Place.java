@@ -20,6 +20,4 @@ public interface Place {
 
     int getId();
 
-    Discount getDiscount();
-
 }
