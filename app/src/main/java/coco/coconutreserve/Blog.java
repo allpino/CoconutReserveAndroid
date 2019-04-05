@@ -1,11 +1,17 @@
 package coco.coconutreserve;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import coco.coconutreserve.Cinema.CinemaDashboard;
+import coco.coconutreserve.Hotel.HotelDashboard;
+import coco.coconutreserve.Transportion.TransportionDashboard;
+import coco.coconutreserve.assets.core.Constants;
 
 public class Blog extends AppCompatActivity {
     private Button dashboard;
@@ -24,24 +30,26 @@ public class Blog extends AppCompatActivity {
 
 
         dashboard.setOnClickListener(new View.OnClickListener() {
-            @Override
+            Intent intent = null;
             public void onClick(View v) {
-            /*    if()
+                if (appType.equals(Constants.CINEMA))
                 {
-
+                    intent = new Intent(Blog.this, CinemaDashboard.class);
                 }
-                else if()
+                else if (appType.equals(Constants.HOTEL))
                 {
 
+                    intent = new Intent(Blog.this, HotelDashboard.class);
                 }
-                else if()
+                else if (appType.equals(Constants.TRANSPORTION))
                 {
-
-                }*/
+                    intent = new Intent(Blog.this, TransportionDashboard.class);
+                }
+                intent.putExtra("appType",appType);
+                startActivity(intent);
             }
         });
 
-        //blog yazıısnı çek al koy
 
         blogTextView.setText( "Hello there, this place is actually really nice to stay ! " );
 
